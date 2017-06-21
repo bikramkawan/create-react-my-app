@@ -6,15 +6,19 @@ import Footer from './Footer';
 class Layout extends Component {
     constructor() {
         super();
-        this.state = {title: 'Welcom Bikram'};
+        this.state = {title: 'Welcome Bikram'};
+    }
+
+    changeTitle(title) {
+        this.setState({title});
     }
 
     render() {
-        setTimeout(()=>this.setState({title: "Welcom Kawan"}), 3000);
+        //   setTimeout(()=>this.setState({title: "Welcom Kawan"}), 3000);
         return (
             <div className="App">
-                <Header title={this.state.title}/>
-                <Header title='Another Title'/>
+                <Header changeTitle={this.changeTitle.bind(this)} title={this.state.title}/>
+                {/*<Header title='Another Title'/>*/}
                 <Footer/>
             </div>
         );
