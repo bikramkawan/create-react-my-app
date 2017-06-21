@@ -4,6 +4,7 @@ import '../App.css';
 class Footer extends Component {
 
     render() {
+        console.log(this.props)
         return (
             <header>Footer</header>
         );
