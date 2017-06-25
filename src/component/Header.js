@@ -11,8 +11,7 @@ class Header extends Component {
     render() {
         return (
             <div>
-                <Title title={this.props.title}/>
-                <input onChange={this.handleChange.bind(this)}/>
+
             </div>
         );
     }
