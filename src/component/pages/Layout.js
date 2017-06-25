@@ -17,14 +17,18 @@ class Layout extends Component {
             <div>
                 <ul>
                     <li><Link to="/">Home</Link></li>
-                    <li><Link to="/about">About</Link></li>
+                    <li name="LinkAbout"><Link to="/about">About</Link></li>
                     <li><Link to="/contact">Contact</Link></li>
                 </ul>
 
                 <hr/>
 
+
                 <Route exact path="/" component={Home}/>
-                <Route path="/about" component={About}/>
+
+                <Route path="/about" render={(props) => (
+                    <About {...props} test='hi'/>
+                )}/>
                 <Route path="/contact" component={Contact}/>
             </div>
 
