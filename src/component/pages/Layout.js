@@ -1,35 +1,19 @@
 import React, {Component} from 'react';
 import '../../App.css';
-import About from './About';
-import Contact from './Contact';
-import Home from './Home';
-
-
-import {
-    Route,
-    Link
-} from 'react-router-dom'
+import Header from '../header/Header';
 
 class Layout extends Component {
     render() {
 
+        const headersNames = ['Home', 'Portfolio', 'About Me', 'Contact Me'];
         return (
             <div>
-                <ul>
-                    <li><Link to="/">Home</Link></li>
-                    <li name="LinkAbout"><Link to="/about">About</Link></li>
-                    <li><Link to="/contact">Contact</Link></li>
-                </ul>
-
-                <hr/>
+                <div className="headerContainer">
+                    <div className="headerImage">Place holder for Image</div>
+                    {headersNames.map(hName=><Header headerName={hName} />)}
+                </div>
 
 
-                <Route exact path="/" component={Home}/>
-
-                <Route path="/about" render={(props) => (
-                    <About {...props} test='hi'/>
-                )}/>
-                <Route path="/contact" component={Contact}/>
             </div>
 
         );
