@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import '../../App.css';
 import Header from '../header/Header';
+import Body from '../body/Body'
+import Footer from '../footer/Footer'
 
 class Layout extends Component {
     render() {
@@ -12,7 +14,8 @@ class Layout extends Component {
                     <div className="headerImage">Place holder for Image</div>
                     {headersNames.map(hName=><Header headerName={hName} />)}
                 </div>
-
+                <Body/>
+                <Footer/>
 
             </div>
 
