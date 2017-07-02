@@ -24,15 +24,45 @@ export const skills = [
     {label: 'ReactJS', level: level.basic, score: score.basic},
 
 ];
+const sort = {asc: 'asc', desc: 'desc'};
 
 
-class About extends Component {
+class MySkills extends Component {
 
-    renderSkill(skills) {
+    constructor(props) {
+        super(props);
+
+    }
+
+
+    componentDidMount() {
+        this.renderSkill();
+    }
+
+
+    componentWillReceiveProps(nextProps) {
+
+        //console.log(nextProps);
+        this.renderSkill();
+    }
+
+    componentWillUpdate(nextProps, nextState) {
+        // console.log(nextProps)
+        this.renderSkill();
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        console.log("Component did update", prevProps, prevState);
+        this.renderSkill();
+    }
+
+    renderSkill() {
+        const s = this.props.skillsObj.skills;
+        console.log(s)
         const width = 1000;
         const container = d3.select('.skillSets')
             .selectAll('div')
-            .data(skills)
+            .data(s)
             .enter().append('g')
             .classed('skill', true);
         container.append('span')
@@ -46,21 +76,85 @@ class About extends Component {
 
             }).text(function (d) {
             return d.level;
-
         });
 
 
+        //  return container;
     }
+
+
+    render() {
+        return <div>
+            <div className="skillSets"></div>
+        </div>;
+    }
+}
+
+class About extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            sort: null,
+            skills: skills
+        };
+
+    }
+
+    onClick(evt) {
+        const v = evt.target.value;
+        if (v == sort.asc) {
+            this.setState({skills: skills, sort: v});
+        }
+        if (v == sort.desc) {
+            this.setState({skills: [skills[0]], sort: v});
+        }
+
+    }
+
+    renderSkill() {
+        const width = 1000;
+        const container = d3.select('.skillSets')
+            .selectAll('div')
+            .data(this.state.skills)
+            .enter().append('g')
+            .classed('skill', true);
+        container.append('span')
+            .text(function (d) {
+                return d.label;
+
+            });
+        container.append('div')
+            .style('width', function (d) {
+                return width / 3 * d.score + 'px'
+
+            }).text(function (d) {
+            return d.level;
+        });
+    }
+
 
     componentDidMount() {
-        this.renderSkill(skills);
-        const myObjects = sortBy(skills.slice(), 'score');
-        console.log(myObjects)
+        //  this.renderSkill();
+        //  const myObjects = sortBy(skills.slice(), 'score');
+        // console.log(myObjects)
 
     }
+
 
     render() {
 
+        let myskill = 'ghjkgkk';
+        if (this.state.sort == sort.asc) {
+            console.log(this.state, 'ascrender')
+            myskill = (<MySkills skillsObj={{'skills': this.state.skills, sort: this.state.sort}}/>);
+
+        }
+        if (this.state.sort == sort.desc) {
+            console.log(this.state, 'descrendr')
+            myskill = (<MySkills skillsObj={{'skills': this.state.skills, sort: this.state.sort}}/>);
+
+        }
 
         return (
             <div className="aboutMe">
@@ -68,7 +162,13 @@ class About extends Component {
                     'font-size': '30px',
                     color: '#003b5b'
                 }}> Skills</span>
-                <div className="skillSets"></div>
+                <select onChange={this.onClick.bind(this)}>
+                    <option value=''>SortMe</option>
+                    <option value='asc'>ASC</option>
+                    <option value='desc'>Desc</option>
+                </select>
+                {myskill}
+
             </div>
         );
     }
