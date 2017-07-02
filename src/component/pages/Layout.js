@@ -3,18 +3,39 @@ import '../../App.css';
 import Header from '../header/Header';
 import Body from '../body/Body'
 import Footer from '../footer/Footer'
+import {Route, Link} from 'react-router-dom'
+import Home from '../pages/Home'
+import Contact from '../pages/Contact'
+import AboutMe from './AboutMe';
+import Portfolio from './Portfolio'
+
+
+const Main = () => (
+    <main>
+        <Route exact path='/' component={Body}/>
+        <Route exact path='/Home' component={Body}/>
+        <Route path='/Contact' component={Contact}/>
+        <Route path='/AboutMe' component={AboutMe}/>
+        <Route path='/Portfolio' component={Portfolio}/>
+    </main>
+)
+
 
 class Layout extends Component {
     render() {
 
-        const headersNames = ['Home', 'Portfolio', 'About Me', 'Contact Me'];
+        const headersNames = [
+            {label: 'Home', linkTo: 'Home'},
+            {label: 'Portfolio', linkTo: 'Portfolio'},
+            {label: 'About Me', linkTo: 'AboutMe'},
+            {label: 'Contact Me', linkTo: 'Contact'}];
         return (
             <div>
                 <div className="headerContainer">
                     <div className="headerImage">Place holder for Image</div>
-                    {headersNames.map(hName=><Header headerName={hName} />)}
+                    {headersNames.map(h=><Header header={h}/>)}
                 </div>
-                <Body/>
+                <Main/>
                 <Footer/>
 
             </div>

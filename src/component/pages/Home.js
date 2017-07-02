@@ -6,6 +6,7 @@ import '../../App.css';
 
 class Home extends Component {
     render() {
+        console.log('dfafasf')
         return (
             <h1>Welcome User ! </h1>
         );

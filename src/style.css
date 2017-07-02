@@ -1,0 +1,100 @@
+.headerContainer {
+  display: flex;
+  height: 64px;
+  background: #003b5b;
+  justify-content: flex-end;
+  color: white;
+  font-size: 16px;
+}
+.headerContainer .hname {
+  display: flex;
+  line-height: 15px;
+  margin-right: 5px;
+  width: 100px;
+  height: 100%;
+  align-items: center;
+}
+.headerContainer .hname:hover {
+  color: lightskyblue;
+  border-top: 3px solid lightskyblue;
+}
+.headerContainer .headerImage {
+  display: block;
+  flex: 1 0 0;
+}
+.mainBody {
+  height: 450px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* align horizontal */
+  background: lightslategrey;
+}
+.mainBody .img {
+  flex: auto;
+  margin: 15px 15px;
+}
+.mainBody > span {
+  position: absolute;
+  /* text-align: center; */
+  /* transform: translateY(50%); */
+  top: 16%;
+  margin-left: 25%;
+  margin-right: 10%;
+}
+.footer {
+  position: relative;
+  height: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* align horizontal */
+  background: lightslategrey;
+}
+.footer .footerimg {
+  width: 100%;
+}
+.footer > span {
+  color: #fff;
+  position: absolute;
+  /* text-align: center; */
+  /* transform: translateY(50%); */
+  top: 50%;
+}
+.portfolio {
+  height: 450px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* align horizontal */
+  background: lightslategrey;
+  padding: 5%;
+}
+.portfolio > img {
+  margin-left: 10px;
+  height: 100%;
+  flex-grow: 1;
+}
+.aboutMe {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  background: lightslategrey;
+  padding: 5%;
+  flex-direction: column;
+}
+.aboutMe .skill {
+  display: flex;
+  height: 30px;
+  margin-bottom: 5px;
+}
+.aboutMe .skill > div {
+  background: red;
+}
+.aboutMe .skill > span {
+  width: 10%;
+  line-height: 20px;
+  align-self: center;
+  font-size: 20px;
+  color: white;
+}
