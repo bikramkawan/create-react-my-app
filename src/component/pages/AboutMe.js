@@ -31,22 +31,54 @@ class About extends Component {
         super();
         this.state = {
             sort: null,
-            skills: skills
+            skills: skills,
+            sortByName: null
         };
 
     }
 
-    onClick(evt) {
-        const v = evt.target.value;
-        if (v === sort.asc) {
+    onSortByValue(evt) {
+        const v = evt.target.className;
+        if (v === 'fa fa-sort-amount-asc fa-fw fa-2x') {
             const s = skills.slice().sort((a, b) => a.score === b.score ? 0 : +(a.score < b.score) || -1);
-            this.setState({skills: s, sort: v});
-        }
-        if (v === sort.desc) {
+            this.setState({skills: s, sort: sort.asc});
+        } else if (v === 'fa fa-sort-amount-desc fa-fw fa-2x') {
             const s = skills.slice().sort((a, b) => a.score === b.score ? 0 : +(a.score > b.score) || -1);
-            this.setState({skills: s, sort: v});
+            this.setState({skills: s, sort: sort.desc});
         }
 
+
+    }
+
+    onSortByName(evt) {
+        const v = evt.target.innerHTML;
+        this.setState({sortByName: !this.state.sortByName});
+        if (this.state.sortByName) {
+            const s = skills.slice().sort((a, b) => a.label.localeCompare(b.label));
+            this.setState({skills: s, sort: null});
+        } else {
+            const s = skills.slice().sort((a, b) => b.label.localeCompare(a.label));
+            this.setState({skills: s, sort: null});
+
+        }
+
+
+    }
+
+
+    renderSortIcon() {
+        if (this.state.sort === sort.asc) {
+            const sortIcon = <a title=" Sort Ascending" onClick={this.onSortByValue.bind(this)}>
+                <i className={`fa fa-sort-amount-desc fa-fw fa-2x`} aria-hidden="true"></i>
+            </a>
+
+            return sortIcon;
+        } else {
+            const sortIcon = <a title=" Sort Descending" onClick={this.onSortByValue.bind(this)}>
+                <i className={`fa fa-sort-amount-asc fa-fw fa-2x`} aria-hidden="true"></i>
+            </a>
+            return sortIcon;
+        }
     }
 
     render() {
@@ -54,14 +86,11 @@ class About extends Component {
             <div className="aboutMe">
                 <span style={{
                     'font-size': '30px',
-                    color: '#003b5b'
-                }}> Skills</span>
-                <i className={`fa fa-sort-desc`} aria-hidden="true" onClick={this.onClick.bind(this)}></i>
-                <select onChange={this.onClick.bind(this)}>
-                    <option value=''>SortMe</option>
-                    <option value='asc'>ASC</option>
-                    <option value='desc'>Desc</option>
-                </select>
+                    color: '#003b5b',
+                    'margin-right': '15px',
+                    cursor: 'pointer'
+                }} onClick={this.onSortByName.bind(this)}> Skills</span>
+                {this.renderSortIcon()}
                 {this.state.skills.map(d =>
                     <MySkills skills={{label: d.label, level: d.level, score: d.score}}/>)
                 }

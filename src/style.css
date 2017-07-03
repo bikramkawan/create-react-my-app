@@ -78,7 +78,6 @@
 .aboutMe {
   height: 100%;
   width: 100%;
-  display: flex;
   background: lightslategrey;
   padding: 5%;
   flex-direction: column;
@@ -89,12 +88,19 @@
   margin-bottom: 5px;
 }
 .aboutMe .skill > div {
-  background: red;
+  background: lightskyblue;
 }
 .aboutMe .skill > span {
   width: 10%;
   line-height: 20px;
   align-self: center;
   font-size: 20px;
-  color: white;
+  color: red;
+}
+.myskills {
+  display: flex;
+}
+.fa {
+  margin-right: 15px;
+  cursor: pointer;
 }
