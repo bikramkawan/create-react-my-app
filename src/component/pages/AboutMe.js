@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import '../../App.css';
 import MySkills from './MySkills'
 
+
 export const level = {basic: 'Basic', advanced: 'Advanced', medium: 'Medium'};
 export const score = {basic: 1, medium: 2, advanced: 3};
 export const skills = [
@@ -37,7 +38,6 @@ class About extends Component {
 
     onClick(evt) {
         const v = evt.target.value;
-
         if (v === sort.asc) {
             const s = skills.slice().sort((a, b) => a.score === b.score ? 0 : +(a.score < b.score) || -1);
             this.setState({skills: s, sort: v});
@@ -56,6 +56,7 @@ class About extends Component {
                     'font-size': '30px',
                     color: '#003b5b'
                 }}> Skills</span>
+                <i className={`fa fa-sort-desc`} aria-hidden="true" onClick={this.onClick.bind(this)}></i>
                 <select onChange={this.onClick.bind(this)}>
                     <option value=''>SortMe</option>
                     <option value='asc'>ASC</option>

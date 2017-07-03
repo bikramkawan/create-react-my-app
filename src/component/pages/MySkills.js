@@ -23,6 +23,7 @@ class MySkills extends Component {
                 'font-size': '20px'
 
             }}>{this.props.skills.label}</span>
+
             <div style={{
                 background: 'lightskyblue',
                 width: this.calcWidth() + 'px'
