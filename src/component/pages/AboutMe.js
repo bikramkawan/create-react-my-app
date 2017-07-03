@@ -34,32 +34,18 @@ class MySkills extends Component {
 
     }
 
-
-    componentDidMount() {
-        this.renderSkill();
+   componentDidMount() {
+        this.renderSkill(this.props)
     }
-
 
     componentWillReceiveProps(nextProps) {
-
-        //console.log(nextProps);
-        this.renderSkill();
+        this.renderSkill(nextProps);
     }
 
-    componentWillUpdate(nextProps, nextState) {
-        // console.log(nextProps)
-        this.renderSkill();
-    }
-
-    componentDidUpdate(prevProps, prevState) {
-        console.log("Component did update", prevProps, prevState);
-        this.renderSkill();
-    }
-
-    renderSkill() {
-        const s = this.props.skillsObj.skills;
-        console.log(s)
+    renderSkill(props) {
+        const s = props.skillsObj.skills;
         const width = 1000;
+        d3.select('.skillSets').selectAll('g').remove();  // Explicitly need to remove dom elements while using d3.
         const container = d3.select('.skillSets')
             .selectAll('div')
             .data(s)
@@ -85,7 +71,9 @@ class MySkills extends Component {
 
     render() {
         return <div>
-            <div className="skillSets"></div>
+            <div className="skillSets">
+
+            </div>
         </div>;
     }
 }
