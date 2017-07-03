@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import '../../App.css';
-import * as d3 from 'd3';
-import {sortBy} from 'lodash'
+import MySkills from './MySkills'
 
 export const level = {basic: 'Basic', advanced: 'Advanced', medium: 'Medium'};
 export const score = {basic: 1, medium: 2, advanced: 3};
@@ -25,25 +24,6 @@ export const skills = [
 
 ];
 const sort = {asc: 'asc', desc: 'desc'};
-
-
-class MySkills extends Component {
-
-    constructor(props) {
-        super(props);
-
-    }
-
-
-    render() {
-        return <div>
-            <div className="skillSets">
-                {this.props.skillsObj.sort}
-               </div>
-        </div>;
-    }
-}
-
 class About extends Component {
 
     constructor() {
@@ -68,17 +48,15 @@ class About extends Component {
 
     render() {
 
-        let myskill = 'ghjkgkk';
-        if (this.state.sort == sort.asc) {
-            console.log(this.state, 'ascrender')
-            myskill = (<MySkills skillsObj={{'skills': this.state.skills, sort: this.state.sort}}/>);
-
-        }
-        if (this.state.sort == sort.desc) {
-            console.log(this.state, 'descrendr')
-            myskill = (<MySkills skillsObj={{'skills': this.state.skills, sort: this.state.sort}}/>);
-
-        }
+        // let myskill = 'ghjkgkk';
+        // if (this.state.sort == sort.asc) {
+        //     myskill = (<MySkills skillsObj={{'skills': this.state.skills, sort: this.state.sort}}/>);
+        //
+        // }
+        // if (this.state.sort == sort.desc) {
+        //     myskill = (<MySkills skillsObj={{'skills': this.state.skills, sort: this.state.sort}}/>);
+        //
+        // }
 
         return (
             <div className="aboutMe">
@@ -91,7 +69,10 @@ class About extends Component {
                     <option value='asc'>ASC</option>
                     <option value='desc'>Desc</option>
                 </select>
-                {myskill}
+                {this.state.skills.map(d =>
+                    <MySkills skills={{label: d.label, level: d.level, score: d.score}}/>)
+                }
+
 
             </div>
         );
