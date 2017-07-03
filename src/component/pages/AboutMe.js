@@ -37,27 +37,19 @@ class About extends Component {
 
     onClick(evt) {
         const v = evt.target.value;
-        if (v == sort.asc) {
-            this.setState({skills: skills, sort: v});
+
+        if (v === sort.asc) {
+            const s = skills.slice().sort((a, b) => a.score === b.score ? 0 : +(a.score < b.score) || -1);
+            this.setState({skills: s, sort: v});
         }
-        if (v == sort.desc) {
-            this.setState({skills: [skills[0]], sort: v});
+        if (v === sort.desc) {
+            const s = skills.slice().sort((a, b) => a.score === b.score ? 0 : +(a.score > b.score) || -1);
+            this.setState({skills: s, sort: v});
         }
 
     }
 
     render() {
-
-        // let myskill = 'ghjkgkk';
-        // if (this.state.sort == sort.asc) {
-        //     myskill = (<MySkills skillsObj={{'skills': this.state.skills, sort: this.state.sort}}/>);
-        //
-        // }
-        // if (this.state.sort == sort.desc) {
-        //     myskill = (<MySkills skillsObj={{'skills': this.state.skills, sort: this.state.sort}}/>);
-        //
-        // }
-
         return (
             <div className="aboutMe">
                 <span style={{
