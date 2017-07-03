@@ -51,7 +51,6 @@ class About extends Component {
     }
 
     onSortByName(evt) {
-        const v = evt.target.innerHTML;
         this.setState({sortByName: !this.state.sortByName});
         if (this.state.sortByName) {
             const s = skills.slice().sort((a, b) => a.label.localeCompare(b.label));
