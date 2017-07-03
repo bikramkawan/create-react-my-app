@@ -34,46 +34,12 @@ class MySkills extends Component {
 
     }
 
-   componentDidMount() {
-        this.renderSkill(this.props)
-    }
-
-    componentWillReceiveProps(nextProps) {
-        this.renderSkill(nextProps);
-    }
-
-    renderSkill(props) {
-        const s = props.skillsObj.skills;
-        const width = 1000;
-        d3.select('.skillSets').selectAll('g').remove();  // Explicitly need to remove dom elements while using d3.
-        const container = d3.select('.skillSets')
-            .selectAll('div')
-            .data(s)
-            .enter().append('g')
-            .classed('skill', true);
-        container.append('span')
-            .text(function (d) {
-                return d.label;
-
-            });
-        container.append('div')
-            .style('width', function (d) {
-                return width / 3 * d.score + 'px'
-
-            }).text(function (d) {
-            return d.level;
-        });
-
-
-        //  return container;
-    }
-
 
     render() {
         return <div>
             <div className="skillSets">
-
-            </div>
+                {this.props.skillsObj.sort}
+               </div>
         </div>;
     }
 }
@@ -99,36 +65,6 @@ class About extends Component {
         }
 
     }
-
-    renderSkill() {
-        const width = 1000;
-        const container = d3.select('.skillSets')
-            .selectAll('div')
-            .data(this.state.skills)
-            .enter().append('g')
-            .classed('skill', true);
-        container.append('span')
-            .text(function (d) {
-                return d.label;
-
-            });
-        container.append('div')
-            .style('width', function (d) {
-                return width / 3 * d.score + 'px'
-
-            }).text(function (d) {
-            return d.level;
-        });
-    }
-
-
-    componentDidMount() {
-        //  this.renderSkill();
-        //  const myObjects = sortBy(skills.slice(), 'score');
-        // console.log(myObjects)
-
-    }
-
 
     render() {
 
