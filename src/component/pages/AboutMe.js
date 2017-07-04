@@ -37,7 +37,7 @@ class About extends Component {
 
     }
 
-    onSortByValue(evt) {
+    onSortByValue = (evt) => {
         const v = evt.target.className;
         if (v === 'fa fa-sort-amount-asc fa-fw fa-2x') {
             const s = skills.slice().sort((a, b) => a.score === b.score ? 0 : +(a.score < b.score) || -1);
@@ -50,7 +50,8 @@ class About extends Component {
 
     }
 
-    onSortByName(evt) {
+
+    onSortByName = (evt) => {
         this.setState({sortByName: !this.state.sortByName});
         if (this.state.sortByName) {
             const s = skills.slice().sort((a, b) => a.label.localeCompare(b.label));
@@ -58,22 +59,20 @@ class About extends Component {
         } else {
             const s = skills.slice().sort((a, b) => b.label.localeCompare(a.label));
             this.setState({skills: s, sort: null});
-
         }
-
 
     }
 
 
     renderSortIcon() {
         if (this.state.sort === sort.asc) {
-            const sortIcon = <a title=" Sort Ascending" onClick={this.onSortByValue.bind(this)}>
+            const sortIcon = <a title=" Sort Ascending" onClick={this.onSortByValue}>
                 <i className={`fa fa-sort-amount-desc fa-fw fa-2x`} aria-hidden="true"></i>
             </a>
 
             return sortIcon;
         } else {
-            const sortIcon = <a title=" Sort Descending" onClick={this.onSortByValue.bind(this)}>
+            const sortIcon = <a title=" Sort Descending" onClick={this.onSortByValue}>
                 <i className={`fa fa-sort-amount-asc fa-fw fa-2x`} aria-hidden="true"></i>
             </a>
             return sortIcon;
@@ -88,7 +87,7 @@ class About extends Component {
                     color: '#003b5b',
                     'margin-right': '15px',
                     cursor: 'pointer'
-                }} onClick={this.onSortByName.bind(this)}> Skills</span>
+                }} onClick={this.onSortByName}> Skills</span>
                 {this.renderSortIcon()}
                 {this.state.skills.map(d =>
                     <MySkills skills={{label: d.label, level: d.level, score: d.score}}/>)
