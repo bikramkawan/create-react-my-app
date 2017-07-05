@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Layout from './component/pages/Layout';
-import {BrowserRouter as Router}  from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
+
 
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
@@ -10,7 +11,7 @@ import './style.css';
 const app = document.getElementById('root');
 
 ReactDOM.render(
-    <Router>
+    <HashRouter>
         <Layout/>
-    </Router>, app);
+    </HashRouter>, app);
 registerServiceWorker();
