@@ -97,10 +97,20 @@
   font-size: 20px;
   color: red;
 }
+.bar {
+  background: lightblue;
+}
+.bar-appear {
+  opacity: 0.01;
+  transition: opacity 50ms ease-in;
+}
 .myskills {
   display: flex;
 }
 .fa {
   margin-right: 15px;
   cursor: pointer;
+}
+.contact {
+  color: red;
 }

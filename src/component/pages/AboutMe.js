@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import '../../App.css';
 import MySkills from './MySkills'
 
-
 export const level = {basic: 'Basic', advanced: 'Advanced', medium: 'Medium'};
 export const score = {basic: 1, medium: 2, advanced: 3};
 export const skills = [
@@ -83,14 +82,15 @@ class About extends Component {
         return (
             <div className="aboutMe">
                 <span style={{
-                    'font-size': '30px',
+                    fontSize: '30px',
                     color: '#003b5b',
-                    'margin-right': '15px',
+                    marginRight: '15px',
                     cursor: 'pointer'
                 }} onClick={this.onSortByName}> Skills</span>
                 {this.renderSortIcon()}
-                {this.state.skills.map(d =>
-                    <MySkills skills={{label: d.label, level: d.level, score: d.score}}/>)
+                {this.state.skills.map((d, i) =>
+                    <MySkills key={i} index={i} skills={{label: d.label, level: d.level, score: d.score}}/>
+                )
                 }
 
 
