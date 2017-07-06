@@ -7,6 +7,7 @@ import { HashRouter } from 'react-router-dom'
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 import './style.css';
+import './animate.css'
 
 const app = document.getElementById('root');
 

@@ -15,11 +15,11 @@ class Portfolio extends Component {
                 transitionAppear={true}
                 transitionAppearTimeout={600}
                 transitionLeaveTimeout={300}>
-                <div className="portfolio">
-                    <img src={nu} alt={"nu"}/>
-                    <img src={revamp} alt={"revamp"}/>
-                    <img src={riderz} alt={"riderz"}/>
-                    <img src={wheels} alt={"wheels"}/>
+                <div className="portfolio ">
+                    <img src={nu} alt={"nu"} className="animated jello"/>
+                    <img src={revamp} alt={"revamp"} className="animated jello"/>
+                    <img src={riderz} alt={"riderz"} className="animated jello"/>
+                    <img src={wheels} alt={"wheels"} className="animated jello"/>
                 </div>
             </ReactCSSTransitionGroup>
         );
