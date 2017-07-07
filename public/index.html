@@ -10,30 +10,115 @@
     <title>React</title>
     <!-- Bootstrap Core CSS -->
 
-    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/cerulean/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom Fonts -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-          type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
-          rel="stylesheet" type="text/css">
-    <script data-main="DemoUtils.js" src="DemoUtils.js"></script>
+    <!--<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/cerulean/bootstrap.min.css" rel="stylesheet">-->
+    <!--&lt;!&ndash; Custom Fonts &ndash;&gt;-->
+    <!--<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"-->
+    <!--type="text/css">-->
+    <!--<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"-->
+    <!--rel="stylesheet" type="text/css">-->
+    <!--<script data-main="DemoUtils.js" src="DemoUtils.js"></script>-->
     <script>
-        document.onreadystatechange = () => {
-            if (document.readyState === 'complete') {
-                if (!DemoUtils.isSupported())
-                    document.querySelector('.checkBrowser')
-                        .classList.add('errorMessage');
-                const errorContainer = document.querySelector('.checkBrowser.errorMessage');
-                DemoUtils.ensureTargetBrowser(errorContainer);
+        //        document.onreadystatechange = () => {
+        //            if (document.readyState === 'complete') {
+        //                if (!DemoUtils.isSupported())
+        //                    document.querySelector('.checkBrowser')
+        //                        .classList.add('errorMessage');
+        //                const errorContainer = document.querySelector('.checkBrowser.errorMessage');
+        //                DemoUtils.ensureTargetBrowser(errorContainer);
+        //
+        //            }
+        //        };
+
+        const browserList = [
+            {
+                // Internet Explorer 11
+                string: navigator.userAgent,
+                subString: "Trident",
+                identity: "Explorer11"
+            },
+            {
+                string: navigator.userAgent,
+                subString: "Chrome",
+                identity: "Chrome"
+            }, { 		// for older Netscapes (4-)
+                string: navigator.userAgent,
+                subString: "Mozilla",
+                identity: "Netscape",
+                versionSearch: "Mozilla"
+            }];
+
+
+        const osList = [
+            {
+                string: navigator.platform,
+                subString: "Win",
+                identity: "Windows"
+            },
+            {
+                string: navigator.platform,
+                subString: "Mac",
+                identity: "Mac"
+            },
+            {
+                string: navigator.userAgent,
+                subString: "iPhone",
+                identity: "iPhone/iPod"
+            },
+            {
+                string: navigator.platform,
+                subString: "Linux",
+                identity: "Linux"
+            }
+        ];
+
+
+        function checkEdgeExist() {
+
+            var a = browserList.filter((d)=>d.string.indexOf('Chrome') !== -1);
+            var b = a.filter(d=>d.subString === 'Chrome')
+            return b[0];
+
+        }
+
+
+        function myName(data) {
+            for (var i = 0; i < data.length; i++) {
+                var userAgent = data[i].string;
+                this.versionSearchString = data[i].versionSearch || data[i].identity;
+                if (userAgent) {
+
+                    var findString = 'Chrome';
+                    var checkIfEdge = checkEdgeExist();
+                    return {test: checkIfEdge.identity};
+
+                    if (userAgent.indexOf(findString) != -1) {
+                        console.log(i, data[i])
+
+                        return data[i].identity;
+
+                    }
+
+                }
 
             }
-        };
+
+        }
+
+
+        function checkBrowser() {
+            const browsername = myName(browserList);
+            console.log(browserList)
+            console.log(browsername)
+
+
+        }
+
     </script>
 </head>
 
 <body>
 
-<body>
+<body onload="checkBrowser()">
 
 <div class="checkBrowser"></div>
 <div class="fade"></div>
