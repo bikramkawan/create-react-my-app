@@ -42,9 +42,14 @@
                 identity: "Chrome"
             }, { 		// for older Netscapes (4-)
                 string: navigator.userAgent,
-                subString: "Mozilla",
-                identity: "Netscape",
-                versionSearch: "Mozilla"
+                subString: "Firefox",
+                identity: "Firefox",
+            },
+            {
+                string: navigator.userAgent,
+                subString: "Apple",
+                identity: "Safari",
+                versionSearch: "Version"
             }];
 
 
@@ -73,42 +78,37 @@
 
 
         function checkEdgeExist() {
-
             var a = browserList.filter((d)=>d.string.indexOf('Chrome') !== -1);
             var b = a.filter(d=>d.subString === 'Chrome')
             return b[0];
 
         }
 
-
         function myName(data) {
             for (var i = 0; i < data.length; i++) {
                 var userAgent = data[i].string;
-                this.versionSearchString = data[i].versionSearch || data[i].identity;
-                if (userAgent) {
-
-                    var findString = 'Chrome';
-                    var checkIfEdge = checkEdgeExist();
-                    return {test: checkIfEdge.identity};
-
-                    if (userAgent.indexOf(findString) != -1) {
-                        console.log(i, data[i])
-
-                        return data[i].identity;
-
-                    }
-
+                var findMe = userAgent.indexOf(data[i].subString);
+                var versionSearchKey = data[i].versionSearch || data[i].identity;
+                if (userAgent && findMe != -1) {
+                    var ver = myVersion(versionSearchKey);
+                    return {version: ver, name: data[i].identity};
                 }
-
             }
+        }
+
+        function myVersion(versionSearchKey) {
+            var userAgent = navigator.userAgent;
+            var index = userAgent.indexOf(versionSearchKey);
+            if (index == -1) return;
+            return parseFloat(userAgent.substring(index + versionSearchKey.length + 1));
 
         }
 
 
         function checkBrowser() {
-            const browsername = myName(browserList);
-            console.log(browserList)
-            console.log(browsername)
+            var browser = myName(browserList);
+            // var browserVersion = myVersion(browserList)
+            console.log(browser)
 
 
         }
