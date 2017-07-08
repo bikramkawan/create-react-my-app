@@ -29,26 +29,30 @@
         //            }
         //        };
 
+        var versionString;
+
+        const browser = {chrome: 'Chrome', firefox: 'Firefox', safari: 'Safari'};
+
+
         const browserList = [
             {
-                // Internet Explorer 11
                 string: navigator.userAgent,
                 subString: "Trident",
                 identity: "Explorer11"
             },
             {
                 string: navigator.userAgent,
-                subString: "Chrome",
-                identity: "Chrome"
-            }, { 		// for older Netscapes (4-)
+                subString: browser.chrome,
+                identity: browser.chrome
+            }, {
                 string: navigator.userAgent,
-                subString: "Firefox",
-                identity: "Firefox",
+                subString: browser.firefox,
+                identity: browser.firefox,
             },
             {
                 string: navigator.userAgent,
                 subString: "Apple",
-                identity: "Safari",
+                identity: browser.safari,
                 versionSearch: "Version"
             }];
 
@@ -84,14 +88,13 @@
 
         }
 
-        function myName(data) {
+        function searchString(data) {
             for (var i = 0; i < data.length; i++) {
                 var userAgent = data[i].string;
                 var findMe = userAgent.indexOf(data[i].subString);
-                var versionSearchKey = data[i].versionSearch || data[i].identity;
+                versionString = data[i].versionSearch || data[i].identity;
                 if (userAgent && findMe != -1) {
-                    var ver = myVersion(versionSearchKey);
-                    return {version: ver, name: data[i].identity};
+                    return data[i].identity;
                 }
             }
         }
@@ -105,10 +108,40 @@
         }
 
 
+        function checkCompability(currentBrowser) {
+
+            if (currentBrowser === browser.chrome) {
+                return false;
+            }
+
+            if (currentBrowser === browser.firefox) {
+                return false;
+            }
+
+            if (currentBrowser === browser.safari) {
+                return false;
+            }
+
+            return false;
+
+
+        }
+
+
         function checkBrowser() {
-            var browser = myName(browserList);
-            // var browserVersion = myVersion(browserList)
-            console.log(browser)
+            var currentBrowser = searchString(browserList);
+            var version = myVersion(versionString);
+            var os = searchString(osList)
+            var checkCom = checkCompability(currentBrowser)
+            console.log(checkCom)
+            if (!checkCom) {
+
+                var selector = document.getElementById('fade');
+                console.log(selector)
+                selector.classList.add('true')
+
+
+            }
 
 
         }
@@ -121,7 +154,13 @@
 <body onload="checkBrowser()">
 
 <div class="checkBrowser"></div>
-<div class="fade"></div>
+<div id="fade" class="fade"> <span>This application was designed to be used in Google Chrome. ...
+    \nRunningthe application in other browsers might result in performance issues or other misbehavior
+</span>
+    <span>Click Me
+    <i class="fa fa-arrow-circle-right"></i>
+    </span>
+</div>
 <div id="root"></div>
 
 

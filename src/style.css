@@ -35,6 +35,9 @@
   opacity: .80;
   filter: alpha(opacity=80);
 }
+.fade.true {
+  display: block;
+}
 .errorMessage {
   display: block;
   position: absolute;
