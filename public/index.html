@@ -20,7 +20,6 @@
     <script>
 
         var versionString;
-
         const browser = {chrome: 'Chrome', firefox: 'Firefox', safari: 'Safari'};
         const os = {iphone: 'iPhone', android: 'Android'};
 
@@ -28,7 +27,8 @@
             {
                 string: navigator.userAgent,
                 subString: "Trident",
-                identity: "Explorer11"
+                identity: "Internet Explorer",
+                versionSearch: "rv"
             },
 
             {
