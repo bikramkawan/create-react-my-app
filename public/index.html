@@ -10,29 +10,19 @@
     <title>React</title>
     <!-- Bootstrap Core CSS -->
 
-    <!--<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/cerulean/bootstrap.min.css" rel="stylesheet">-->
-    <!--&lt;!&ndash; Custom Fonts &ndash;&gt;-->
-    <!--<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"-->
-    <!--type="text/css">-->
-    <!--<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"-->
-    <!--rel="stylesheet" type="text/css">-->
-    <!--<script data-main="DemoUtils.js" src="DemoUtils.js"></script>-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/cerulean/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
+          rel="stylesheet" type="text/css">
+
     <script>
-        //        document.onreadystatechange = () => {
-        //            if (document.readyState === 'complete') {
-        //                if (!DemoUtils.isSupported())
-        //                    document.querySelector('.checkBrowser')
-        //                        .classList.add('errorMessage');
-        //                const errorContainer = document.querySelector('.checkBrowser.errorMessage');
-        //                DemoUtils.ensureTargetBrowser(errorContainer);
-        //
-        //            }
-        //        };
 
         var versionString;
 
         const browser = {chrome: 'Chrome', firefox: 'Firefox', safari: 'Safari'};
-
+        const os = {iphone: 'iPhone', android: 'Android'};
 
         const browserList = [
             {
@@ -40,7 +30,17 @@
                 subString: "Trident",
                 identity: "Explorer11"
             },
+
             {
+                string: navigator.userAgent,
+                subString: 'OPR',
+                identity: 'Opera'
+            }, {
+                string: navigator.userAgent,
+                subString: 'Edge',
+                identity: 'Edge'
+            }
+            , {
                 string: navigator.userAgent,
                 subString: browser.chrome,
                 identity: browser.chrome
@@ -48,30 +48,44 @@
                 string: navigator.userAgent,
                 subString: browser.firefox,
                 identity: browser.firefox,
-            },
-            {
+            }, {
                 string: navigator.userAgent,
                 subString: "Apple",
                 identity: browser.safari,
                 versionSearch: "Version"
-            }];
+            },];
 
 
         const osList = [
+            {
+                string: navigator.userAgent,
+                subString: "iPhone OS",
+                identity: os.iphone
+            },
+            {
+                string: navigator.userAgent,
+                subString: "Android",
+                identity: os.android
+            },
             {
                 string: navigator.platform,
                 subString: "Win",
                 identity: "Windows"
             },
             {
-                string: navigator.platform,
-                subString: "Mac",
-                identity: "Mac"
+                string: navigator.userAgent,
+                subString: "Mac OS X",
+                identity: "Mac OS X"
             },
             {
                 string: navigator.userAgent,
                 subString: "iPhone",
                 identity: "iPhone/iPod"
+            },
+            {
+                string: navigator.userAgent,
+                subString: "Android",
+                identity: "Android"
             },
             {
                 string: navigator.platform,
@@ -82,8 +96,8 @@
 
 
         function checkEdgeExist() {
-            var a = browserList.filter((d)=>d.string.indexOf('Chrome') !== -1);
-            var b = a.filter(d=>d.subString === 'Chrome')
+            var a = browserList.filter((d)=>d.string.indexOf('Edge') !== -1);
+            var b = a.filter(d=>d.subString === 'Edge')
             return b[0];
 
         }
@@ -93,7 +107,9 @@
                 var userAgent = data[i].string;
                 var findMe = userAgent.indexOf(data[i].subString);
                 versionString = data[i].versionSearch || data[i].identity;
+                // alert(checkEdgeExist());
                 if (userAgent && findMe != -1) {
+
                     return data[i].identity;
                 }
             }
@@ -108,7 +124,21 @@
         }
 
 
-        function checkCompability(currentBrowser) {
+        function checkCompability(currentBrowser, currentOS) {
+
+            if (currentOS === os.iphone) {
+                if (currentBrowser === browser.safari) {
+                    return false;
+                }
+                return false;
+            }
+
+            if (currentOS === os.android) {
+                if (currentBrowser === browser.chrome) {
+                    return false;
+                }
+                return false
+            }
 
             if (currentBrowser === browser.chrome) {
                 return false;
@@ -132,17 +162,17 @@
             var currentBrowser = searchString(browserList);
             var version = myVersion(versionString);
             var os = searchString(osList)
+            var currentOS = myVersion(os)
             var checkCom = checkCompability(currentBrowser)
-            console.log(checkCom)
             if (!checkCom) {
-
-                var selector = document.getElementById('fade');
-                console.log(selector)
-                selector.classList.add('true')
-
+                var selector = document.getElementById('checkBrowser');
+                selector.classList.add('errorMessage')
+                document.getElementById('fade')
+                        .setAttribute('style', 'display:block');
 
             }
 
+            return
 
         }
 
@@ -153,13 +183,10 @@
 
 <body onload="checkBrowser()">
 
-<div class="checkBrowser"></div>
-<div id="fade" class="fade"> <span>This application was designed to be used in Google Chrome. ...
-    \nRunningthe application in other browsers might result in performance issues or other misbehavior
-</span>
-    <span>Click Me
-    <i class="fa fa-arrow-circle-right"></i>
-    </span>
+<div id='checkBrowser' class="checkBrowser"><span>This application was designed to be used in Google Chrome.
+Running ...the application in other browsers might result in performance issues or other misbehavior.</span><span
+        class="clickMe" title="Click Here to Continue"><i class="fa fa-arrow-circle-right fa-3x"></i></span></div>
+<div id="fade" class="fade">
 </div>
 <div id="root"></div>
 
