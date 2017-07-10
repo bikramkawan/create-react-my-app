@@ -19,26 +19,34 @@
 
     <script>
 
-        var versionString;
-        const browser = {chrome: 'Chrome', firefox: 'Firefox', safari: 'Safari'};
-        const os = {iphone: 'iPhone', android: 'Android'};
+        var versionString, currentBrowser, currentBrowserVersion, currentOs, currentOsVersion;
+        var browser = {chrome: 'Chrome', firefox: 'Firefox', safari: 'Safari', edge: 'Edge', explorer: 'Explorer'};
+        var osActualNames = {iphone: 'iphone', android: 'android', ipad: 'ipad'};
+        var osSearchString = {iphone: 'iPhone OS', android: 'Android', ipad: 'iPad; CPU OS'};
+        var browserSupportVersion = {chrome: 45, firefox: 45, explorer: 11, edge: 31, safari: 9};
+        var browserOutdatedVersion = {chrome: 36, firefox: 29};
+        var mobileSupportVersion = {iphone: 10, android: 6, ipad: 10};
+        var mobileOutdatedVersion = {iphone: 9, android: 5, ipad: 9};
+        var errorStatus = {incompatible: 0, outdated: 1, supported: 2};
 
-        const browserList = [
+        var browserList = [
             {
                 string: navigator.userAgent,
                 subString: "Trident",
-                identity: "Internet Explorer",
+                identity: browser.explorer,
                 versionSearch: "rv"
             },
 
             {
                 string: navigator.userAgent,
                 subString: 'OPR',
-                identity: 'Opera'
+                identity: 'Opera',
+                versionSearch: "OPR"
+
             }, {
                 string: navigator.userAgent,
-                subString: 'Edge',
-                identity: 'Edge'
+                subString: browser.edge,
+                identity: browser.edge
             }
             , {
                 string: navigator.userAgent,
@@ -56,16 +64,21 @@
             },];
 
 
-        const osList = [
+        var osList = [
             {
                 string: navigator.userAgent,
-                subString: "iPhone OS",
-                identity: os.iphone
+                subString: osSearchString.iphone,
+                identity: osActualNames.iphone,
             },
             {
                 string: navigator.userAgent,
-                subString: "Android",
-                identity: os.android
+                subString: osSearchString.ipad,
+                identity: osActualNames.ipad,
+            },
+            {
+                string: navigator.userAgent,
+                subString: osSearchString.android,
+                identity: osActualNames.android
             },
             {
                 string: navigator.platform,
@@ -95,21 +108,12 @@
         ];
 
 
-        function checkEdgeExist() {
-            var a = browserList.filter((d)=>d.string.indexOf('Edge') !== -1);
-            var b = a.filter(d=>d.subString === 'Edge')
-            return b[0];
-
-        }
-
         function searchString(data) {
             for (var i = 0; i < data.length; i++) {
                 var userAgent = data[i].string;
                 var findMe = userAgent.indexOf(data[i].subString);
                 versionString = data[i].versionSearch || data[i].identity;
-                // alert(checkEdgeExist());
-                if (userAgent && findMe != -1) {
-
+                if (userAgent && findMe !== -1) {
                     return data[i].identity;
                 }
             }
@@ -118,70 +122,116 @@
         function myVersion(versionSearchKey) {
             var userAgent = navigator.userAgent;
             var index = userAgent.indexOf(versionSearchKey);
-            if (index == -1) return;
+            if (index === -1) return;
             return parseFloat(userAgent.substring(index + versionSearchKey.length + 1));
 
         }
 
 
-        function checkCompability(currentBrowser, currentOS) {
+        function checkMobile(checkOS, checkBrowser, outdatedVersion, supportedVersion) {
 
-            if (currentOS === os.iphone) {
-                if (currentBrowser === browser.safari) {
-                    return false;
+            if (currentOs === checkOS && currentOsVersion < outdatedVersion) {
+
+                return errorStatus.incompatible;
+            }
+            if (currentOs === checkOS && currentOsVersion >= outdatedVersion && currentOsVersion < supportedVersion) {
+
+                if (currentBrowser === checkBrowser) {
+
+                    return errorStatus.outdated;
+                } else {
+                    return errorStatus.incompatible;
                 }
-                return false;
             }
+            if (currentOs === checkOS && currentOsVersion >= supportedVersion) {
 
-            if (currentOS === os.android) {
-                if (currentBrowser === browser.chrome) {
-                    return false;
+                if (currentBrowser === checkBrowser) {
+                    return errorStatus.supported;
+                } else {
+                    return errorStatus.incompatible;
                 }
-                return false
             }
 
-            if (currentBrowser === browser.chrome) {
-                return false;
-            }
+            return errorStatus.incompatible;
 
-            if (currentBrowser === browser.firefox) {
-                return false;
-            }
+        }
 
-            if (currentBrowser === browser.safari) {
-                return false;
-            }
 
-            return false;
+        function checkDesktop(browserOutdatedVersion, browserSupportVersion) {
+            if (currentBrowserVersion >= browserSupportVersion) {
+                return errorStatus.supported;
+            } else if (currentBrowserVersion >= browserOutdatedVersion && currentBrowserVersion < browserSupportVersion) {
+                return errorStatus.outdated;
+            }
+            return errorStatus.incompatible;
+
+        }
+
+
+        function expectedBrowser() {
+
+            if (currentOs === osActualNames.iphone || currentOs === osActualNames.ipad) {
+                return browser.safari;
+
+            }
+            if (currentOs === osActualNames.android) {
+                return browser.chrome;
+
+            }
+            return;
 
 
         }
 
 
-        function checkBrowser() {
-            var currentBrowser = searchString(browserList);
-            var version = myVersion(versionString);
-            var os = searchString(osList)
-            var currentOS = myVersion(os)
-            var checkCom = checkCompability(currentBrowser)
-            if (!checkCom) {
-                var selector = document.getElementById('checkBrowser');
-                selector.classList.add('errorMessage')
-                document.getElementById('fade')
-                        .setAttribute('style', 'display:block');
+        function checkCompability() {
 
+            if (osActualNames[currentOs] === currentOs) {
+
+                return checkMobile(currentOs, expectedBrowser(), mobileOutdatedVersion[currentOs], mobileSupportVersion[currentOs]);
             }
 
-            return
+            if (currentBrowser === browser[currentBrowser.toLowerCase()]) {
 
+                return checkDesktop(browserOutdatedVersion[currentBrowser.toLowerCase()], browserSupportVersion[currentBrowser.toLowerCase()])
+            }
+
+            return errorStatus.incompatible;
         }
 
+        function checkForBrowserCompatability() {
+            var parent = document.getElementById('content');
+            var child = document.getElementById('responsive-container');
+            currentBrowser = searchString(browserList);
+            currentBrowserVersion = myVersion(versionString);
+            currentOs = searchString(osList);
+            currentOsVersion = myVersion(osSearchString[currentOs]);
+
+
+            var checkCom = checkCompability();
+            if (checkCom === errorStatus.incompatible) {
+//				parent.removeChild(child);
+//				var errorContainer = document.getElementById('checkBrowser');
+//
+//				errorContainer.setAttribute('style', 'display:flex');
+//				parent.appendChild(errorContainer);
+                alert('incompatible' + currentOs + currentOsVersion + currentBrowser + currentBrowserVersion)
+            }
+            if (checkCom === errorStatus.outdated) {
+                alert('outdated' + currentOs + currentOsVersion + currentBrowser + currentBrowserVersion)
+            }
+            if (checkCom === errorStatus.supported) {
+                alert('supported' + currentOs + currentOsVersion + currentBrowser + currentBrowserVersion)
+            }
+
+            //return;
+        }
     </script>
 </head>
 
 <body>
 
-<body onload="checkBrowser()">
+<body onload="checkForBrowserCompatability()">
 
 <div id='checkBrowser' class="checkBrowser"><span>This application was designed to be used in Google Chrome.
 Running ...the application in other browsers might result in performance issues or other misbehavior.</span><span
