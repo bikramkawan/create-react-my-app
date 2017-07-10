@@ -57,6 +57,9 @@
   align-self: center;
   margin-top: 5px;
 }
+.checkBrowser {
+  display: none;
+}
 .browser {
   position: absolute;
   margin-left: 50%;
@@ -136,6 +139,12 @@
   align-self: center;
   font-size: 20px;
   color: red;
+}
+.incompatible {
+  display: none;
+}
+.outdated {
+  display: none;
 }
 .bar {
   background: lightblue;

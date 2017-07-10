@@ -210,18 +210,28 @@
 
             var checkCom = checkCompability();
             if (checkCom === errorStatus.incompatible) {
-//				parent.removeChild(child);
-//				var errorContainer = document.getElementById('checkBrowser');
-//
-//				errorContainer.setAttribute('style', 'display:flex');
-//				parent.appendChild(errorContainer);
-                alert('incompatible' + currentOs + currentOsVersion + currentBrowser + currentBrowserVersion)
+                parent.removeChild(child);
+                var errorContainer = document.getElementById('checkBrowser');
+                errorContainer.setAttribute('style', 'display:flex');
+                var incompatibledom = document.getElementById('incompatible')
+                incompatibledom.setAttribute('style', 'display:block')
+                var outdated = document.getElementById('outdated')
+                outdated.setAttribute('style', 'display:none')
+                parent.appendChild(errorContainer);
+                //              alert('incompatible' + currentOs + currentOsVersion + currentBrowser + currentBrowserVersion)
             }
             if (checkCom === errorStatus.outdated) {
-                alert('outdated' + currentOs + currentOsVersion + currentBrowser + currentBrowserVersion)
+                var errorContainer = document.getElementById('checkBrowser');
+                errorContainer.setAttribute('style', 'display:flex');
+                var incompatibledom = document.getElementById('incompatible')
+                incompatibledom.setAttribute('style', 'display:none')
+                var outdated = document.getElementById('outdated')
+                outdated.setAttribute('style', 'display:block')
+
+//                alert('outdated' + currentOs + currentOsVersion + currentBrowser + currentBrowserVersion)
             }
             if (checkCom === errorStatus.supported) {
-                alert('supported' + currentOs + currentOsVersion + currentBrowser + currentBrowserVersion)
+                //            alert('supported' + currentOs + currentOsVersion + currentBrowser + currentBrowserVersion)
             }
 
             //return;
@@ -233,9 +243,14 @@
 
 <body onload="checkForBrowserCompatability()">
 
-<div id='checkBrowser' class="checkBrowser"><span>This application was designed to be used in Google Chrome.
-Running ...the application in other browsers might result in performance issues or other misbehavior.</span><span
-        class="clickMe" title="Click Here to Continue"><i class="fa fa-arrow-circle-right fa-3x"></i></span></div>
+
+<div id='checkBrowser' class="checkBrowser"><span id="incompatible">This application was designed to be used in Google Chrome.
+Running ...the application in other browsers might result in performance issues or other misbehavior.</span>
+
+    <span id="outdated">Your browser is outdated.Please update your browser or try Google Chrome</span>
+
+
+    <span class="clickMe" title="Click Here to Continue"><i class="fa fa-arrow-circle-right fa-3x"></i></span></div>
 <div id="fade" class="fade">
 </div>
 <div id="root"></div>
