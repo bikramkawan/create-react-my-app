@@ -32,7 +32,7 @@ class Layout extends Component {
             <div className="root">
                 <div className="headerContainer">
                     <div className="headerImage">Place holder for Image</div>
-                    {headersNames.map(h=><Header header={h}/>)}
+                    {headersNames.map((h, i)=><Header key={i} header={h}/>)}
                 </div>
                 <Main/>
                 <Footer/>

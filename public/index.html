@@ -16,27 +16,243 @@
           type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
           rel="stylesheet" type="text/css">
-    <script data-main="DemoUtils.js" src="DemoUtils.js"></script>
+
     <script>
-        document.onreadystatechange = () => {
-            if (document.readyState === 'complete') {
-                if (!DemoUtils.isSupported())
-                    document.querySelector('.checkBrowser')
-                        .classList.add('errorMessage');
-                const errorContainer = document.querySelector('.checkBrowser.errorMessage');
-                DemoUtils.ensureTargetBrowser(errorContainer);
+
+        var versionString, currentBrowser, currentBrowserVersion, currentOs, currentOsVersion;
+        var browser = {chrome: 'Chrome', firefox: 'Firefox', safari: 'Safari', edge: 'Edge', explorer: 'Explorer'};
+        var osActualNames = {iphone: 'iphone', android: 'android', ipad: 'ipad'};
+        var osSearchString = {iphone: 'iPhone OS', android: 'Android', ipad: 'iPad; CPU OS'};
+        var browserSupportVersion = {chrome: 45, firefox: 45, explorer: 11, edge: 31, safari: 9};
+        var browserOutdatedVersion = {chrome: 36, firefox: 29};
+        var mobileSupportVersion = {iphone: 10, android: 6, ipad: 10};
+        var mobileOutdatedVersion = {iphone: 9, android: 5, ipad: 9};
+        var errorStatus = {incompatible: 0, outdated: 1, supported: 2};
+
+        var browserList = [
+            {
+                string: navigator.userAgent,
+                subString: "Trident",
+                identity: browser.explorer,
+                versionSearch: "rv"
+            },
+
+            {
+                string: navigator.userAgent,
+                subString: 'OPR',
+                identity: 'Opera',
+                versionSearch: "OPR"
+
+            }, {
+                string: navigator.userAgent,
+                subString: browser.edge,
+                identity: browser.edge
+            }
+            , {
+                string: navigator.userAgent,
+                subString: browser.chrome,
+                identity: browser.chrome
+            }, {
+                string: navigator.userAgent,
+                subString: browser.firefox,
+                identity: browser.firefox,
+            }, {
+                string: navigator.userAgent,
+                subString: "Apple",
+                identity: browser.safari,
+                versionSearch: "Version"
+            },];
+
+
+        var osList = [
+            {
+                string: navigator.userAgent,
+                subString: osSearchString.iphone,
+                identity: osActualNames.iphone,
+            },
+            {
+                string: navigator.userAgent,
+                subString: osSearchString.ipad,
+                identity: osActualNames.ipad,
+            },
+            {
+                string: navigator.userAgent,
+                subString: osSearchString.android,
+                identity: osActualNames.android
+            },
+            {
+                string: navigator.platform,
+                subString: "Win",
+                identity: "Windows"
+            },
+            {
+                string: navigator.userAgent,
+                subString: "Mac OS X",
+                identity: "Mac OS X"
+            },
+            {
+                string: navigator.userAgent,
+                subString: "iPhone",
+                identity: "iPhone/iPod"
+            },
+            {
+                string: navigator.userAgent,
+                subString: "Android",
+                identity: "Android"
+            },
+            {
+                string: navigator.platform,
+                subString: "Linux",
+                identity: "Linux"
+            }
+        ];
+
+
+        function searchString(data) {
+            for (var i = 0; i < data.length; i++) {
+                var userAgent = data[i].string;
+                var findMe = userAgent.indexOf(data[i].subString);
+                versionString = data[i].versionSearch || data[i].identity;
+                if (userAgent && findMe !== -1) {
+                    return data[i].identity;
+                }
+            }
+        }
+
+        function myVersion(versionSearchKey) {
+            var userAgent = navigator.userAgent;
+            var index = userAgent.indexOf(versionSearchKey);
+            if (index === -1) return;
+            return parseFloat(userAgent.substring(index + versionSearchKey.length + 1));
+
+        }
+
+
+        function checkMobile(checkOS, checkBrowser, outdatedVersion, supportedVersion) {
+
+            if (currentOs === checkOS && currentOsVersion < outdatedVersion) {
+
+                return errorStatus.incompatible;
+            }
+            if (currentOs === checkOS && currentOsVersion >= outdatedVersion && currentOsVersion < supportedVersion) {
+
+                if (currentBrowser === checkBrowser) {
+
+                    return errorStatus.outdated;
+                } else {
+                    return errorStatus.incompatible;
+                }
+            }
+            if (currentOs === checkOS && currentOsVersion >= supportedVersion) {
+
+                if (currentBrowser === checkBrowser) {
+                    return errorStatus.supported;
+                } else {
+                    return errorStatus.incompatible;
+                }
+            }
+
+            return errorStatus.incompatible;
+
+        }
+
+
+        function checkDesktop(browserOutdatedVersion, browserSupportVersion) {
+            if (currentBrowserVersion >= browserSupportVersion) {
+                return errorStatus.supported;
+            } else if (currentBrowserVersion >= browserOutdatedVersion && currentBrowserVersion < browserSupportVersion) {
+                return errorStatus.outdated;
+            }
+            return errorStatus.incompatible;
+
+        }
+
+
+        function expectedBrowser() {
+
+            if (currentOs === osActualNames.iphone || currentOs === osActualNames.ipad) {
+                return browser.safari;
 
             }
-        };
+            if (currentOs === osActualNames.android) {
+                return browser.chrome;
+
+            }
+            return;
+
+
+        }
+
+
+        function checkCompability() {
+
+            if (osActualNames[currentOs] === currentOs) {
+
+                return checkMobile(currentOs, expectedBrowser(), mobileOutdatedVersion[currentOs], mobileSupportVersion[currentOs]);
+            }
+
+            if (currentBrowser === browser[currentBrowser.toLowerCase()]) {
+
+                return checkDesktop(browserOutdatedVersion[currentBrowser.toLowerCase()], browserSupportVersion[currentBrowser.toLowerCase()])
+            }
+
+            return errorStatus.incompatible;
+        }
+
+        function checkForBrowserCompatability() {
+            var parent = document.getElementById('content');
+            var child = document.getElementById('responsive-container');
+            currentBrowser = searchString(browserList);
+            currentBrowserVersion = myVersion(versionString);
+            currentOs = searchString(osList);
+            currentOsVersion = myVersion(osSearchString[currentOs]);
+
+
+            var checkCom = checkCompability();
+            if (checkCom === errorStatus.incompatible) {
+                parent.removeChild(child);
+                var errorContainer = document.getElementById('checkBrowser');
+                errorContainer.setAttribute('style', 'display:flex');
+                var incompatibledom = document.getElementById('incompatible')
+                incompatibledom.setAttribute('style', 'display:block')
+                var outdated = document.getElementById('outdated')
+                outdated.setAttribute('style', 'display:none')
+                parent.appendChild(errorContainer);
+                //              alert('incompatible' + currentOs + currentOsVersion + currentBrowser + currentBrowserVersion)
+            }
+            if (checkCom === errorStatus.outdated) {
+                var errorContainer = document.getElementById('checkBrowser');
+                errorContainer.setAttribute('style', 'display:flex');
+                var incompatibledom = document.getElementById('incompatible')
+                incompatibledom.setAttribute('style', 'display:none')
+                var outdated = document.getElementById('outdated')
+                outdated.setAttribute('style', 'display:block')
+
+//                alert('outdated' + currentOs + currentOsVersion + currentBrowser + currentBrowserVersion)
+            }
+            if (checkCom === errorStatus.supported) {
+                //            alert('supported' + currentOs + currentOsVersion + currentBrowser + currentBrowserVersion)
+            }
+
+            //return;
+        }
     </script>
 </head>
 
 <body>
 
-<body>
+<body onload="checkForBrowserCompatability()">
 
-<div class="checkBrowser"></div>
-<div class="fade"></div>
+
+<div id='checkBrowser' class="checkBrowser"><span id="incompatible">This application was designed to be used in Google Chrome.
+Running ...the application in other browsers might result in performance issues or other misbehavior.</span>
+
+    <span id="outdated">Your browser is outdated.Please update your browser or try Google Chrome</span>
+
+
+    <span class="clickMe" title="Click Here to Continue"><i class="fa fa-arrow-circle-right fa-3x"></i></span></div>
+<div id="fade" class="fade">
+</div>
 <div id="root"></div>
 
 

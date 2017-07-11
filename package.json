@@ -16,6 +16,7 @@
   "devDependencies": {
     "d3": "^4.9.1",
     "react-addons-css-transition-group": "^15.6.0",
+    "react-google-maps": "^7.1.0",
     "react-router": "^4.1.1",
     "react-scripts": "1.0.7",
     "react-transition-group": "^1.2.0"

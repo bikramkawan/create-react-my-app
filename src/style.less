@@ -47,6 +47,9 @@
   -moz-opacity: 0.8;
   opacity: .80;
   filter: alpha(opacity=80);
+  &.true {
+    display: block;
+  }
 }
 
 .errorMessage {
@@ -70,6 +73,9 @@
 
 }
 
+.checkBrowser{
+  display: none;
+}
 .browser {
   position: absolute;
   margin-left: 50%;
@@ -156,6 +162,15 @@
 
     }
   }
+}
+
+.incompatible {
+
+  display: none;
+}
+
+.outdated {
+  display: none;
 }
 
 .bar {

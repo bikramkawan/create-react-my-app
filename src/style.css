@@ -42,6 +42,9 @@
   opacity: .80;
   filter: alpha(opacity=80);
 }
+.fade.true {
+  display: block;
+}
 .errorMessage {
   display: block;
   position: absolute;
@@ -60,6 +63,9 @@
 .errorMessage > span {
   align-self: center;
   margin-top: 5px;
+}
+.checkBrowser {
+  display: none;
 }
 .browser {
   position: absolute;
@@ -138,6 +144,12 @@
   align-self: center;
   font-size: 20px;
   color: red;
+}
+.incompatible {
+  display: none;
+}
+.outdated {
+  display: none;
 }
 .bar {
   background: lightblue;
