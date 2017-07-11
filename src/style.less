@@ -1,3 +1,5 @@
+@import (less) "animate.css";
+
 .root {
   display: flex;
   flex-direction: column;
@@ -137,17 +139,24 @@
 }
 
 .portfolio {
-  height: 450px;
+  flex-grow: 1;
   width: 100%;
   display: flex;
-  justify-content: center; /* align horizontal */
-  background: lightslategrey;
-  padding: 5%;
+  flex-wrap: wrap;
+  overflow: auto;
+  border: 5px solid #2fa4e7;
 
   & > img {
-    margin-left: 10px;
-    height: 100%;
-    flex-grow: 1;
+    margin: 2.5%;
+    height: 50%;
+    -ms-flex-positive: 1;
+    box-shadow: 6px 6px darkgrey;
+    width: 45%;
+    &:hover {
+      border: solid;
+      transform: scale(10.3);
+    }
+
   }
 }
 

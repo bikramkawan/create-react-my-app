@@ -32,7 +32,9 @@ class Body extends Component {
 function startTypingText(text, i, fnCallback) {
 
     if (i < (text.length)) {
-        document.querySelector(".typeWrite").innerHTML = text.substring(0, i + 1) +
+        const selector = document.querySelector(".typeWrite");
+        if (selector === null || selector === undefined) return;
+        selector.innerHTML = text.substring(0, i + 1) +
             '<span aria-hidden="true"></span>';
         setTimeout(function () {
             startTypingText(text, i + 1, fnCallback)
