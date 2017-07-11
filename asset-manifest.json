@@ -1,12 +1,13 @@
 {
-  "main.css": "static/css/main.19ddacb6.css",
-  "main.css.map": "static/css/main.19ddacb6.css.map",
-  "main.js": "static/js/main.344dd37e.js",
-  "main.js.map": "static/js/main.344dd37e.js.map",
-  "static\\media\\bg.jpg": "static/media/bg.64e8e105.jpg",
-  "static\\media\\footer.png": "static/media/footer.d0356093.png",
-  "static\\media\\nu.png": "static/media/nu.81ec8051.png",
-  "static\\media\\revamp.png": "static/media/revamp.a0d5f26c.png",
-  "static\\media\\riderz.png": "static/media/riderz.0f42cd4d.png",
-  "static\\media\\wheels.png": "static/media/wheels.4a618f2f.png"
+  "main.css": "static/css/main.f681c706.css",
+  "main.css.map": "static/css/main.f681c706.css.map",
+  "main.js": "static/js/main.5c2c436c.js",
+  "main.js.map": "static/js/main.5c2c436c.js.map",
+  "static/media/bg.jpg": "static/media/bg.c9e39e29.jpg",
+  "static/media/footer.png": "static/media/footer.d0356093.png",
+  "static/media/nu.png": "static/media/nu.81ec8051.png",
+  "static/media/portfoliobg.jpg": "static/media/portfoliobg.ce74a4f9.jpg",
+  "static/media/revamp.png": "static/media/revamp.a0d5f26c.png",
+  "static/media/riderz.png": "static/media/riderz.0f42cd4d.png",
+  "static/media/wheels.png": "static/media/wheels.4a618f2f.png"
 }

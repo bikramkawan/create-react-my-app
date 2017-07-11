@@ -128,7 +128,7 @@
 
     function isSupportedBrowser() {
         if (BrowserDetect.browser === 'Chrome') {
-            return true;
+            return false;
         }
 
         if (BrowserDetect.browser === 'Explorer11') {
@@ -185,34 +185,11 @@
         return true;
     }
 
-    function getQueryStringParameter(name) {
-        var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
-        return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
-    }
-
-    function explodeTreeItems(itemsToExplodeDict, allTreeItems) {
-        var selection = [];
-
-        _.each(allTreeItems, function (item) { // For each tree item of current level
-
-            var itemIsSelected = itemsToExplodeDict === null || itemsToExplodeDict[item.id];	// item is selected if its own ID is included or a parent is selected
-
-            if (item.items !== undefined && item.items !== null && item.items.length > 0) { // Check if item has child nodes
-                // If item is selected, pass null to child nodes to indicate that parent was selected
-                selection = _.union(selection, explodeTreeItems((itemIsSelected ? null : itemsToExplodeDict), item.items));
-            } else if (itemIsSelected) {
-                selection.push(item.id);
-            }
-        });
-
-        return selection;
-    }
 
     window.DemoUtils = {
         isSupported: isSupportedBrowser,
         ensureTargetBrowser: ensureTargetBrowser,
-        getQueryStringParameter: getQueryStringParameter,
-        explodeTreeItems: explodeTreeItems
+
     };
 
 })();
