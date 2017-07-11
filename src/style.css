@@ -72,6 +72,11 @@
   margin-left: 50%;
   margin-top: 10%;
 }
+@keyframes caret {
+  50% {
+    border-color: transparent;
+  }
+}
 .mainBody {
   height: 80vh;
   display: flex;
@@ -79,13 +84,19 @@
   /* align horizontal */
   background: lightslategrey;
 }
+.mainBody .typeWrite {
+  position: absolute;
+  font-size: 100px;
+  color: white;
+  top: 25%;
+  border-right: .05em solid;
+  animation: caret 1s steps(1) infinite;
+}
 .mainBody > span {
   position: absolute;
-  /* text-align: center; */
-  /* transform: translateY(50%); */
-  top: 16%;
-  margin-left: 25%;
-  margin-right: 10%;
+  top: 50%;
+  font-size: 30px;
+  color: white;
 }
 .mainBody > img {
   max-width: 100%;

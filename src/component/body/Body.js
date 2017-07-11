@@ -1,28 +1,61 @@
 import React, {Component} from 'react';
 import '../../App.css';
 import img from './bg.jpg'
-import ReactCSSTransitionGroup  from "react-addons-css-transition-group";
+
 
 class Body extends Component {
 
-    render() {
-        return (
-            <ReactCSSTransitionGroup
-                transitionName="rotate-scale-up"
-                transitionAppear={true}
-                transitionAppearTimeout={600}
-                transitionEnterTimeout={500}
-                transitionLeaveTimeout={300}>
-                <div className="mainBody">
-                    <img src={img} alt={"logo"} className="img"/>
-                    <span>
-                    Greetings ! This is Bikram from Nepal. I love to travel , hike and make new friends.
 
+    componentDidMount() {
+        initializeTypingText(0); //Pick first word from array as default
+    }
+
+    render() {
+
+        return (
+
+            <div className="mainBody">
+                <img src={img} alt={"logo"} className="img"/>
+                <span className="typeWrite">
                 </span>
-                </div>
-            </ReactCSSTransitionGroup>
+                <span>
+                    I'm Bikram & Developer.
+                </span>
+
+            </div>
+
         );
     }
 }
+
+
+function startTypingText(text, i, fnCallback) {
+
+    if (i < (text.length)) {
+        document.querySelector(".typeWrite").innerHTML = text.substring(0, i + 1) +
+            '<span aria-hidden="true"></span>';
+        setTimeout(function () {
+            startTypingText(text, i + 1, fnCallback)
+        }, 150);
+    }
+    else if (typeof fnCallback === 'function') {
+        setTimeout(fnCallback, 700);
+    }
+}
+
+
+function initializeTypingText(i) {
+    const textScrolls = ["Developer", "Nepali", "&#127932; Opeth "];
+    if (textScrolls[i] === undefined) return initializeTypingText(0);
+
+    if (i < textScrolls[i].length) {
+
+        startTypingText(textScrolls[i], 0, function () {
+
+            initializeTypingText(i + 1);
+        });
+    }
+}
+
 
 export default Body;
