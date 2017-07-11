@@ -10,13 +10,13 @@ import Portfolio from './Portfolio'
 
 
 const Main = () => (
-    <main>
+    <div className="wrapper">
         <Route exact path='/' component={Body}/>
         <Route exact path='/Home' component={Body}/>
         <Route path='/Contact' component={Contact}/>
         <Route path='/AboutMe' component={AboutMe}/>
         <Route path='/Portfolio' component={Portfolio}/>
-    </main>
+    </div>
 )
 
 
@@ -29,7 +29,7 @@ class Layout extends Component {
             {label: 'About Me', linkTo: 'AboutMe'},
             {label: 'Contact Me', linkTo: 'Contact'}];
         return (
-            <div>
+            <div className="root">
                 <div className="headerContainer">
                     <div className="headerImage">Place holder for Image</div>
                     {headersNames.map(h=><Header header={h}/>)}

@@ -1,6 +1,10 @@
+.root {
+  display: flex;
+  flex-direction: column;
+}
 .headerContainer {
   display: flex;
-  height: 64px;
+  height: 10vh;
   background: #003b5b;
   justify-content: flex-end;
   color: white;
@@ -21,6 +25,9 @@
 .headerContainer .headerImage {
   display: block;
   flex: 1 0 0;
+}
+.wrapper > div {
+  max-height: 80vh;
 }
 .fade {
   display: none;
@@ -60,16 +67,11 @@
   margin-top: 10%;
 }
 .mainBody {
-  height: 450px;
-  width: 100%;
+  height: 80vh;
   display: flex;
   justify-content: center;
   /* align horizontal */
   background: lightslategrey;
-}
-.mainBody .img {
-  flex: auto;
-  margin: 15px 15px;
 }
 .mainBody > span {
   position: absolute;
@@ -79,9 +81,12 @@
   margin-left: 25%;
   margin-right: 10%;
 }
+.mainBody > img {
+  max-width: 100%;
+}
 .footer {
   position: relative;
-  height: 100px;
+  height: 10vh;
   width: 100%;
   display: flex;
   justify-content: center;
