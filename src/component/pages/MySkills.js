@@ -11,7 +11,7 @@ class MySkills extends Component {
         super();
     }
     calcWidth() {
-        return 1000 / 3 * this.props.skills.score;
+        return 40 / 3 * this.props.skills.score;
     }
 
     render() {
@@ -26,15 +26,15 @@ class MySkills extends Component {
                 display: 'flex',
                 marginBottom: '5px'
             }}>
-                <span style={{
-                    width: '10%',
+                <div style={{
+                    width: '10vw',
                     lineHeight: '20px',
                     alignSelf: 'center',
                     fontSize: '20px'
 
-                }}>{this.props.skills.label}</span>
+                }}>{this.props.skills.label}</div>
                     <div style={{
-                       width: this.calcWidth() + 'px'
+                       width: this.calcWidth()+'vw'
                     }} className="bar"> {this.props.skills.level}</div>
 
             </div>

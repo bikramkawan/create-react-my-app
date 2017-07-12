@@ -1315,6 +1315,17 @@
 .slideOutUp {
   animation-name: slideOutUp;
 }
+body {
+  color: #000;
+}
+h2,
+h3,
+h1,
+h5,
+h4 {
+  color: #000;
+  font-family: Open Sans;
+}
 .root {
   display: flex;
   flex-direction: column;
@@ -1457,11 +1468,75 @@
   transform: scale(10.3);
 }
 .aboutMe {
-  height: 100%;
-  width: 100%;
-  background: lightslategrey;
-  padding: 5%;
+  display: flex;
+}
+.aboutMe .biography {
+  flex: 1.5;
+  border: solid;
+  overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+.aboutMe .biography .bioContainer {
+  margin: 0 50px;
+  display: flex;
   flex-direction: column;
+  border-bottom: 2px dotted;
+}
+.aboutMe .biography .bioContainer > * {
+  margin-bottom: 25px;
+}
+.aboutMe .biography .bioContainer .myinfo {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 40px;
+}
+.aboutMe .biography .bioContainer .myinfo > div {
+  flex-grow: 1;
+  flex-basis: 50%;
+}
+.aboutMe .biography .bioContainer .myinfo .infoList {
+  display: flex;
+  align-items: center;
+}
+.aboutMe .biography .bioContainer .myinfo .infoList > h4 {
+  margin-right: 10px;
+}
+.aboutMe .biography .serviceContainer {
+  border-top: 2px dotted;
+}
+.aboutMe .biography .myServices {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 100px;
+}
+.aboutMe .biography .myServices .slist {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-basis: 33%;
+  height: 125px;
+  align-self: center;
+  justify-content: space-around;
+}
+.aboutMe .biography .myServices .slist:nth-child(4) {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.aboutMe .biography .myServices .slist:nth-child(5) {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.aboutMe .myself {
+  flex: 1;
+  border: solid;
+}
+.aboutMe .bars {
+  margin: 20px 50px;
 }
 .aboutMe .skill {
   display: flex;
@@ -1485,13 +1560,14 @@
   display: none;
 }
 .bar {
-  background: lightblue;
+  background: lightgray;
 }
 .bar-appear {
   opacity: 0.01;
   transition: opacity 50ms ease-in;
 }
 .bar-appear-active {
+  opacity: 1;
   transition: opacity 50ms ease-in;
 }
 .myskills {

@@ -1,5 +1,14 @@
 @import (less) "animate.css";
 
+body {
+  color: #000;
+}
+
+h2, h3, h1, h5, h4 {
+  color: #000;
+  font-family: Open Sans;
+}
+
 .root {
   display: flex;
   flex-direction: column;
@@ -161,11 +170,90 @@
 }
 
 .aboutMe {
-  height: 100%;
-  width: 100%;
-  background: lightslategrey;
-  padding: 5%;
-  flex-direction: column;
+  display: flex;
+
+  .biography {
+    flex: 1.5;
+    border: solid;
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+
+    .bioContainer {
+      margin: 0 50px;
+      display: flex;
+      flex-direction: column;
+      border-bottom: 2px dotted;
+      & > * {
+        margin-bottom: 25px;
+      }
+      .myinfo {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: 40px;
+
+        & > div {
+          flex-grow: 1;
+          flex-basis: 50%;
+
+        }
+
+        .infoList {
+          display: flex;
+          align-items: center;
+
+          & > h4 {
+            margin-right: 10px;
+          }
+
+        }
+
+      }
+
+    }
+
+    .serviceContainer {
+      border-top: 2px dotted;
+    }
+    .myServices {
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: 100px;
+      .slist {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        flex-basis: 33%;
+        height: 125px;
+        align-self: center;
+        justify-content: space-around;
+
+        &:nth-child(4) {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          align-items: center;
+        }
+
+        &:nth-child(5) {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          align-items: center;
+        }
+      }
+
+    }
+
+  }
+  .myself {
+    flex: 1;
+    border: solid;
+  }
+
+  .bars {
+    margin: 20px 50px;
+  }
   .skill {
     display: flex;
     height: 30px;
@@ -195,7 +283,7 @@
 }
 
 .bar {
-  background: lightblue;
+  background: lightgray;
 }
 
 .bar-appear {
@@ -204,6 +292,7 @@
 }
 
 .bar-appear-active {
+  opacity: 1;
   transition: opacity 50ms ease-in
 }
 

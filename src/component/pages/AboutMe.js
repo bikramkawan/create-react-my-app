@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import '../../App.css';
 import MySkills from './MySkills'
+import Biography from './Biography';
+import myself from './myself1.jpg';
 
 export const level = {basic: 'Basic', advanced: 'Advanced', medium: 'Medium'};
 export const score = {basic: 1, medium: 2, advanced: 3};
@@ -81,19 +83,25 @@ class About extends Component {
     render() {
         return (
             <div className="aboutMe">
-                <span style={{
-                    fontSize: '30px',
-                    color: '#003b5b',
-                    marginRight: '15px',
-                    cursor: 'pointer'
-                }} onClick={this.onSortByName}> Skills</span>
-                {this.renderSortIcon()}
-                {this.state.skills.map((d, i) =>
-                    <MySkills key={i} index={i} skills={{label: d.label, level: d.level, score: d.score}}/>
-                )
-                }
+                <div className="biography">
+                    <Biography/>
+                    <div className="bars">
+                            <span style={{
+                                fontSize: '30px',
+                                color: '#2fa4e7',
+                                marginRight: '15px',
+                                cursor: 'pointer'
+                            }} onClick={this.onSortByName}> Skills</span>
+                        {this.renderSortIcon()}
+                        {this.state.skills.map((d, i) =>
+                            <MySkills key={i} index={i} skills={{label: d.label, level: d.level, score: d.score}}/>
+                        )
+                        }
 
+                    </div>
 
+                </div>
+                <div className="myself"><img style={{width: '100%', height: '100%'}} src={myself} alt={"nu"}/></div>
             </div>
         );
     }
