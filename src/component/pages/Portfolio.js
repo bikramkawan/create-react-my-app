@@ -12,7 +12,7 @@ class Portfolio extends Component {
 
         return (
 
-            <div style={{display: 'flex'}}>
+            <div style={{display: 'flex',height:'100%'}}>
                 <div className="portfolio">
                     <img src={nu} alt={"nu"} className="animated jello"/>
                     <img src={revamp} alt={"revamp"} className="animated jello"/>
