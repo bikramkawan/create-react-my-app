@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 
 
 class Header extends Component {
@@ -9,10 +9,11 @@ class Header extends Component {
         return (
             <div>
                 <div className="hname">
-                    <Link to={'/' + this.props.header.linkTo}><span>
+                    <NavLink to={'/' + this.props.header.linkTo} activeClassName="test">
+
                         {this.props.header.label}
-                              </span>
-                    </Link>
+
+                    </NavLink>
                 </div>
 
 

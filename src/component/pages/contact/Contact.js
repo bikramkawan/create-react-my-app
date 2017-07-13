@@ -57,7 +57,7 @@ const Form = () => {
         <form method="POST" action="http://formspree.io/bikramkawan@gmail.com" className="form">
             <input type="email" name="email" placeholder="Your email"/>
             <textarea name="message" placeholder="Your message"></textarea>
-            <button type="submit">Send</button>
+            <button type="submit" className="btn">Send</button>
         </form>
     </div>)
 }
