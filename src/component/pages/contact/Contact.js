@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import contactimg from './contactbg.jpg'
 import {
     BrowserRouter as Router,
     Route,
@@ -9,26 +9,26 @@ import {
 const ContactMe = () => (
     <div className="contactMe">
         <h2>Contact Me</h2>
-        <h5>Looking forward to hear from you !</h5>
+        <h4>Let me hear from you!</h4>
     </div>
 )
 
 const Address = () => (
     <div className="address">
         <div className="list">
-            <i class="fa fa-map-marker" aria-hidden="true"></i>
-            <h5>Address</h5>
+            <i className="fa fa-map-marker fa-3x" aria-hidden="true"></i>
+            <h4>Address</h4>
             <p>Bhaktapur, Nepal</p>
         </div>
 
         <div className="list">
-            <i class="fa fa-phone" aria-hidden="true"></i>
+            <i className="fa fa-phone fa-3x" aria-hidden="true"></i>
             <h5>Phone</h5>
             <p>+977-9841-XXXXXX</p>
         </div>
 
         <div className="list">
-            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+            <i className="fa fa-envelope-o fa-3x" aria-hidden="true"></i>
             <h5>Email</h5>
             <p>bikramkawan@gmail.com</p>
         </div>
@@ -38,8 +38,8 @@ const Address = () => (
 )
 
 const Form = () => {
-    return (<div>
-        <form method="POST" action="http://formspree.io/bikramkawan@gmail.com">
+    return (<div className="formContainer">
+        <form method="POST" action="http://formspree.io/bikramkawan@gmail.com" className="form">
             <input type="email" name="email" placeholder="Your email"/>
             <textarea name="message" placeholder="Your message"></textarea>
             <button type="submit">Send</button>
@@ -48,23 +48,22 @@ const Form = () => {
 }
 
 
-const clickMe = ({target: {value}}) => (console.log(value) )
-const MyList = ({label}) => (<div>
-    {console.log(label)}
-    {label}
-</div>)
-
-const Dumb = ({firstName, lastName}) => (<div>{console.log(lastName, firstName)}</div>)
 
 class Contact extends Component {
 
     render() {
-        const props = {firstName: 'Ben', lastName: 'Hector'};
+
         return (
-            <div>
-                <ContactMe/>
-                <Address/>
-                <Form/>
+            <div className="contactContainer">
+                <div className="left">
+                    <ContactMe/>
+                    <Address/>
+                    <Form/>
+                </div>
+
+                <div className="right">
+                    <img style={{width: '100%', height: '100%'}} src={contactimg} alt={"nu"}/>
+                </div>
             </div>
 
 

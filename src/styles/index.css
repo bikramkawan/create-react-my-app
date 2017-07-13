@@ -1551,6 +1551,48 @@
 .slideOutUp {
   animation-name: slideOutUp;
 }
+.contactContainer {
+  display: flex;
+  height: 80vh;
+}
+.contactContainer .left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: 40px;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+.contactContainer .left .contactMe {
+  height: 20%;
+}
+.contactContainer .left .address {
+  display: flex;
+  justify-content: space-between;
+  height: 30%;
+}
+.contactContainer .left .formContainer {
+  display: flex;
+  height: 50%;
+  margin-bottom: 10px;
+}
+.contactContainer .left .formContainer .form {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.contactContainer .left .formContainer .form input {
+  height: 10%;
+}
+.contactContainer .left .formContainer .form textarea {
+  height: 70%;
+}
+.contactContainer .left .formContainer .form button {
+  height: 10%;
+}
+.contactContainer .right {
+  flex: 1;
+}
 body {
   margin: 0;
   padding: 0;
