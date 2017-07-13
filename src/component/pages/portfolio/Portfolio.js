@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import '../../../styles/App.css';
+
 import nu from './img/nu.png';
 import revamp from './img/revamp.png';
 import riderz from './img/riderz.png';

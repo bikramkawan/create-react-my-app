@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import '../../../styles/App.css';
+
 import MySkills from './MySkills'
 import Biography from './Biography';
 import myself from './img/myself1.jpg';

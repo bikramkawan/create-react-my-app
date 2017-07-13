@@ -3,7 +3,7 @@
  */
 
 import React, {Component} from 'react';
-import '../../../styles/App.css';
+
 import ReactCSSTransitionGroup  from "react-addons-css-transition-group";
 
 class MySkills extends Component {
