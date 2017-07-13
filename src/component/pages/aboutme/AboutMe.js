@@ -101,7 +101,7 @@ class About extends Component {
                     </div>
 
                 </div>
-                <div className="myself"><img style={{width: '100%', height: '100%'}}  alt={"nu"}/></div>
+                <div className="myself"><img style={{width: '100%', height: '100%'}} src={myself} alt={"nu"}/></div>
             </div>
         );
     }

@@ -6,19 +6,47 @@ import {
     Link
 } from 'react-router-dom'
 
-const Home = () => (
-    <div>
-        <h2>Home</h2>
+const ContactMe = () => (
+    <div className="contactMe">
+        <h2>Contact Me</h2>
+        <h5>Looking forward to hear from you !</h5>
     </div>
 )
 
-const About = () => (
-    <div>
-        <h2>About</h2>
-        <MyList label="label1"/>
-        <MyList label="label2"/>
+const Address = () => (
+    <div className="address">
+        <div className="list">
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
+            <h5>Address</h5>
+            <p>Bhaktapur, Nepal</p>
+        </div>
+
+        <div className="list">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            <h5>Phone</h5>
+            <p>+977-9841-XXXXXX</p>
+        </div>
+
+        <div className="list">
+            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+            <h5>Email</h5>
+            <p>bikramkawan@gmail.com</p>
+        </div>
+
+
     </div>
 )
+
+const Form = () => {
+    return (<div>
+        <form method="POST" action="http://formspree.io/bikramkawan@gmail.com">
+            <input type="email" name="email" placeholder="Your email"/>
+            <textarea name="message" placeholder="Your message"></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>)
+}
+
 
 const clickMe = ({target: {value}}) => (console.log(value) )
 const MyList = ({label}) => (<div>
@@ -34,12 +62,9 @@ class Contact extends Component {
         const props = {firstName: 'Ben', lastName: 'Hector'};
         return (
             <div>
-                <h1 className="animated jello"> Hello Contact </h1>
-                <About/>
-                <Dumb {...props}/>
-                <div onClick={clickMe} dangerouslySetInnerHTML={{
-                    __html: 'test'
-                }}></div>
+                <ContactMe/>
+                <Address/>
+                <Form/>
             </div>
 
 
