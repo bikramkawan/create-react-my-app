@@ -19,6 +19,9 @@
   color: lightskyblue;
   border-top: 3px solid lightskyblue;
 }
+.headerContainer .hname a {
+  color: #2fa4e7;
+}
 .headerContainer .headerImage {
   display: block;
   flex: 1 0 0;
@@ -63,14 +66,21 @@
 }
 .portfolio > img {
   margin: 2.5%;
-  height: 50%;
+  height: 20%;
   -ms-flex-positive: 1;
   box-shadow: 6px 6px darkgrey;
-  width: 45%;
+  width: 20%;
 }
 .portfolio > img:hover {
   border: solid;
   transform: scale(10.3);
+}
+.portfolioURL {
+  background-color: aliceblue;
+  opacity: 0.5;
+  flex-grow: 1;
+  cursor: pointer;
+  margin: 5%;
 }
 .bar {
   background: lightgray;
@@ -1594,7 +1604,7 @@
   height: 70%;
 }
 .contactContainer .left .formContainer .form button {
-  height: 10%;
+  margin-top: 3px;
 }
 .contactContainer .right {
   flex: 1;
