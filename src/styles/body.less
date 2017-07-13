@@ -1,0 +1,33 @@
+.wrapper {
+  height: 80vh;
+  & > div {
+    max-height: 80vh;
+  }
+}
+
+.mainBody {
+  height: 80vh;
+
+  display: flex;
+  justify-content: center; /* align horizontal */
+  background: lightslategrey;
+
+  & .typeWrite {
+    position: absolute;
+    font-size: 100px;
+    color: white;
+    top: 25%;
+    border-right: .05em solid;
+    animation: caret 1s steps(1) infinite;
+  }
+  & > span {
+    position: absolute;
+    top: 50%;
+    font-size: 30px;
+    color: white;
+  }
+
+  & > img {
+    max-width: 100%;
+  }
+}

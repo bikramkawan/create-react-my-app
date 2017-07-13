@@ -1,0 +1,21 @@
+.portfolio {
+  flex-grow: 1;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: auto;
+  border: 5px solid #2fa4e7;
+
+  & > img {
+    margin: 2.5%;
+    height: 50%;
+    -ms-flex-positive: 1;
+    box-shadow: 6px 6px darkgrey;
+    width: 45%;
+    &:hover {
+      border: solid;
+      transform: scale(10.3);
+    }
+
+  }
+}
