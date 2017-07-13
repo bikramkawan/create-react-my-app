@@ -49,15 +49,15 @@ class Portfolio extends Component {
             <div style={{display: 'flex', height: '100%'}}>
                 <div className="portfolio">
                     <img src={nu} alt={"nu"} className="animated jello"
-                         onMouseOver={this.zoomIn}
+                         title="Nepal Underground" onMouseOver={this.zoomIn}
                          onMouseLeave={this.zoomOut}/>
                     <img src={revamp} alt={"revamp"} className="animated jello"
-                         onMouseOver={this.zoomIn}
+                         title="Revamp Wear" onMouseOver={this.zoomIn}
                          onMouseLeave={this.zoomOut}/>
                     <img src={riderz} alt={"riderz"} className="animated jello" onMouseOver={this.zoomIn}
-                         onMouseLeave={this.zoomOut}/>
+                         title="Riderz Nepal" onMouseLeave={this.zoomOut}/>
                     <img src={wheels} alt={"wheels"} className="animated jello" onMouseOver={this.zoomIn}
-                         onMouseLeave={this.zoomOut}/>
+                         title="The Wheels" onMouseLeave={this.zoomOut}/>
                 </div>
                 <div style={{
                     flexGrow: '1',
