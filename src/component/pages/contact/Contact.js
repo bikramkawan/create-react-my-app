@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import contactimg from './contactbg.jpg'
+import contactimg from './contactbg.jpg';
+
 import {
     BrowserRouter as Router,
     Route,
@@ -37,6 +38,20 @@ const Address = () => (
     </div>
 )
 
+
+const Map = () => {
+    return (
+        <div className="map">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3533.644144614193!2d85.43532381417766!3d27.666479533895497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb0554ac31b83b%3A0x76de09be0d283ef7!2sJagati-2%2C+Bhaktapur!5e0!3m2!1sen!2sat!4v1499967120265"
+                frameBorder="0" allowFullScreen></iframe>
+
+        </div>
+
+    )
+}
+
+
 const Form = () => {
     return (<div className="formContainer">
         <form method="POST" action="http://formspree.io/bikramkawan@gmail.com" className="form">
@@ -48,22 +63,23 @@ const Form = () => {
 }
 
 
-
 class Contact extends Component {
 
     render() {
-
+        var initialCenter = {lng: -90.1056957, lat: 29.9717272}
         return (
             <div className="contactContainer">
                 <div className="left">
                     <ContactMe/>
                     <Address/>
+                    <Map/>
                     <Form/>
                 </div>
 
                 <div className="right">
                     <img style={{width: '100%', height: '100%'}} src={contactimg} alt={"nu"}/>
                 </div>
+
             </div>
 
 
