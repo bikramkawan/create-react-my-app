@@ -2,7 +2,7 @@
  * Created by bikramkawan on 6/25/17.
  */
 import React, {Component} from 'react';
-import '../../App.css';
+import '../../styles/App.css';
 
 class Home extends Component {
     render() {

@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import '../../App.css';
+import '../../../styles/App.css';
 import MySkills from './MySkills'
 import Biography from './Biography';
-import myself from './myself1.jpg';
+import myself from './img/myself1.jpg';
 
 export const level = {basic: 'Basic', advanced: 'Advanced', medium: 'Medium'};
 export const score = {basic: 1, medium: 2, advanced: 3};
@@ -101,7 +101,7 @@ class About extends Component {
                     </div>
 
                 </div>
-                <div className="myself"><img style={{width: '100%', height: '100%'}} src={myself} alt={"nu"}/></div>
+                <div className="myself"><img style={{width: '100%', height: '100%'}}  alt={"nu"}/></div>
             </div>
         );
     }

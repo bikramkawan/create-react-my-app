@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import '../../App.css';
-import nu from './nu.png';
-import revamp from './revamp.png';
-import riderz from './riderz.png';
-import wheels from './wheels.png';
-import portfoliobg from './portfoliobg.jpg'
+import '../../../styles/App.css';
+import nu from './img/nu.png';
+import revamp from './img/revamp.png';
+import riderz from './img/riderz.png';
+import wheels from './img/wheels.png';
+import portfoliobg from './img/portfoliobg.jpg'
 import ReactCSSTransitionGroup  from "react-addons-css-transition-group";
 import {Link} from 'react-router-dom'
 class Portfolio extends Component {
