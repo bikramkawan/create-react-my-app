@@ -1,14 +1,16 @@
 {
-  "main.css": "static/css/main.dd48803e.css",
-  "main.css.map": "static/css/main.dd48803e.css.map",
-  "main.js": "static/js/main.81268909.js",
-  "main.js.map": "static/js/main.81268909.js.map",
+  "main.css": "static/css/main.56899541.css",
+  "main.css.map": "static/css/main.56899541.css.map",
+  "main.js": "static/js/main.c0085725.js",
+  "main.js.map": "static/js/main.c0085725.js.map",
   "static/media/bg.jpg": "static/media/bg.c9e39e29.jpg",
+  "static/media/contactbg.jpg": "static/media/contactbg.b3213035.jpg",
   "static/media/footer.png": "static/media/footer.d0356093.png",
   "static/media/myself1.jpg": "static/media/myself1.ecdf62f0.jpg",
   "static/media/nu.png": "static/media/nu.81ec8051.png",
   "static/media/portfoliobg.jpg": "static/media/portfoliobg.ce74a4f9.jpg",
   "static/media/revamp.png": "static/media/revamp.a0d5f26c.png",
   "static/media/riderz.png": "static/media/riderz.0f42cd4d.png",
+  "static/media/temp_data.tsv": "static/media/temp_data.2beccc85.tsv",
   "static/media/wheels.png": "static/media/wheels.4a618f2f.png"
 }
