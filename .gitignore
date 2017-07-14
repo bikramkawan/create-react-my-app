@@ -24,4 +24,5 @@ yarn-error.log*
 !/src/style.css
 .idea/workspace.xml
 src/styles/*.css
+src/styles/index.css
 src/styles/aboutme/*.css
