@@ -20,7 +20,7 @@ export const url = {
     riderz: 'http://www.riderznepal.com'
 }
 
-const WebIframe = ({address})=> {
+const WebIframe = ({address}) => {
     return (
         <iframe className="portfolioURL animated fadeInRight" src={address} frameBorder="0" allowFullScreen>
         </iframe>
@@ -39,7 +39,7 @@ class Portfolio extends Component {
     }
 
 
-    zoomIn = ({target:{alt}}) => {
+    zoomIn = ({target: {alt}}) => {
 
         this.setState({onMouse: true, url: alt});
 
@@ -97,7 +97,7 @@ class Portfolio extends Component {
                 }}>
                     {this.state.onMouse ? <WebIframe address={url[this.state.url]}/> : ''}
                     {this.state.heatmap ? <Heatmap/> : ''}
-                    {this.state.lineChart ? <LineChart source={data}/> : ''}
+                    {this.state.lineChart ? <LineChart/> : ''}
 
                 </div>
 

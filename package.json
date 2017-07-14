@@ -4,7 +4,6 @@
   "private": true,
   "homepage": "https://bikramkawan.github.io/create-react-my-app",
   "dependencies": {
-    "d3": "^4.9.1",
     "gh-pages": "^1.0.0",
     "lodash": "^4.17.4",
     "react": "^15.5.4",
