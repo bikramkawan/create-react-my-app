@@ -56,13 +56,48 @@
 .mainBody > img {
   max-width: 100%;
 }
-.portfolio {
+.portfolioContainer {
+  display: flex;
+  height: 100%;
+}
+.portfolioContainer .left {
   flex-grow: 1;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   overflow: auto;
   border: 5px solid #2fa4e7;
+  flex-direction: column;
+}
+.portfolioContainer .left .d3examples {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.portfolioContainer .left .d3examples ul {
+  padding: 0;
+}
+.portfolioContainer .left .d3examples li {
+  font-size: 20px;
+  background-color: lightgray;
+  height: 40px;
+  border-radius: 11px;
+  border: 2px solid;
+  text-align: center;
+  line-height: 40px;
+  margin-bottom: 10px;
+  list-style-type: none;
+}
+.portfolioContainer .right {
+  flex-grow: 1;
+  width: 100%;
+  display: flex;
+  background-size: cover;
+}
+.portfolioContainer .right .d3Container {
+  position: absolute;
+  margin: 5%;
 }
 .portfolio > img {
   margin: 2.5%;
@@ -81,6 +116,31 @@
   flex-grow: 1;
   cursor: pointer;
   margin: 5%;
+}
+path {
+  fill: none;
+  stroke: blue;
+  stroke-width: 2px;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #CCC;
+  shape-rendering: crispEdges;
+}
+.brush .extent {
+  stroke: #fff;
+  fill-opacity: .125;
+  shape-rendering: crispEdges;
+}
+.path_context {
+  stroke: grey;
+  fill: grey;
+}
+.path_temp {
+  fill: none;
+  stroke: url(#line-gradient);
+  stroke-width: 2px;
 }
 .bar {
   background: lightgray;
