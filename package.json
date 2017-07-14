@@ -10,16 +10,13 @@
     "react-addons-css-transition-group": "^15.6.0",
     "react-dom": "^15.5.4",
     "react-fontawesome": "^1.6.1",
-    "react-router-dom": "^4.1.1"
+    "react-router-dom": "^4.1.1",
+    "d3": "^3.5.17",
+    "react-router": "^4.1.1",
+    "react-transition-group": "^1.2.0"
   },
   "devDependencies": {
-    "axios": "^0.16.2",
-    "d3": "^3.5.17",
-    "react-addons-css-transition-group": "^15.6.0",
-    "react-google-maps": "^7.1.0",
-    "react-router": "^4.1.1",
-    "react-scripts": "1.0.7",
-    "react-transition-group": "^1.2.0"
+    "react-scripts": "1.0.7"
   },
   "scripts": {
     "start": "react-scripts start",
