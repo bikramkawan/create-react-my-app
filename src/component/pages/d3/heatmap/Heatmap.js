@@ -28,9 +28,9 @@ class Heatmap extends Component {
         }
 
 
-        const width = d3.select('.right').property('clientWidth') * 0.80;
-        const height = d3.select('.right').property('clientHeight') * 0.80;
-        const svg = d3.select(".d3Container")
+        const width = d3.select('.svgbody').property('clientWidth');
+        const height = d3.select('.svgbody').property('clientHeight');
+        const svg = d3.select(".svgbody")
             .append("svg")
             .attr("class", "chart")
             .attr("width", width)
@@ -90,7 +90,7 @@ class Heatmap extends Component {
                 return (prev === null) ? 0 : parseFloat(d3.select(prev).attr('x')) + parseFloat(d3.select(prev).attr('width'))
             })
             .attr('y', function (d, i) {
-                if (i == 0) {
+                if (i === 0) {
                     counter = counter + 1;
                 }
                 return (counter - 1) * row_height;
@@ -112,7 +112,10 @@ class Heatmap extends Component {
 
     render() {
         return (
-            <div className="d3Container"></div>
+            <div className="d3Container">
+                <div className="svgbody">
+                </div>
+            </div>
         );
     }
 }

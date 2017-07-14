@@ -79,13 +79,14 @@
   padding: 0;
 }
 .portfolioContainer .left .d3examples li {
+  padding: 5px;
   font-size: 20px;
   background-color: lightgray;
   height: 40px;
   border-radius: 11px;
   border: 2px solid;
   text-align: center;
-  line-height: 40px;
+  line-height: 30px;
   margin-bottom: 10px;
   list-style-type: none;
 }
@@ -96,8 +97,13 @@
   background-size: cover;
 }
 .portfolioContainer .right .d3Container {
-  position: absolute;
-  margin: 5%;
+  width: 100%;
+  background: white;
+  display: flex;
+}
+.portfolioContainer .right .d3Container .svgbody {
+  flex-grow: 1;
+  margin: 2%;
 }
 .portfolio > img {
   margin: 2.5%;

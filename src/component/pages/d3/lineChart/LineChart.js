@@ -3,7 +3,6 @@
  */
 import React, {Component} from 'react';
 import * as d3 from 'd3';
-import axios from 'axios';
 import tempdata from './temp_data.tsv'
 
 
@@ -11,10 +10,7 @@ class LineChart extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            sort: null,
 
-        };
     }
 
 
@@ -22,15 +18,17 @@ class LineChart extends Component {
 
         d3.tsv(tempdata, function (tsvdata) {
             console.log(tsvdata)
-            this.setState({sort: tsvdata});
 
+
+            const totalwidth = d3.select('.svgbody').property('clientWidth');
+            const totalheight = d3.select('.svgbody').property('clientHeight');
 
             var margin = {top: 20, right: 20, bottom: 110, left: 40},
-                margin2 = {top: 430, right: 20, bottom: 30, left: 40},
+                margin2 = {top: totalheight - 70, right: 20, bottom: 30, left: 40},
+                width = totalwidth - margin.left - margin.right,
+                height = totalheight - margin.top - margin.bottom,
+                height2 = totalheight - margin2.top - margin2.bottom;
 
-                height2 = 500 - margin2.top - margin2.bottom;
-            const width = d3.select('.right').property('clientWidth') * 0.80;
-            const height = d3.select('.right').property('clientHeight') * 0.80;
 
             var parseDate = d3.time.format("%Y%m%d").parse;
 
@@ -72,12 +70,11 @@ class LineChart extends Component {
                     });
             };
 
-
-            const svg = d3.select(".d3Container")
+            const svg = d3.select(".svgbody")
                 .append("svg")
                 .attr("class", "chart")
-                .attr("width", width)
-                .attr("height", height);
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom);
 
             svg.append("defs").append("clipPath")
                 .attr("id", "clip")
@@ -202,15 +199,11 @@ class LineChart extends Component {
     render() {
         return (
             <div className="d3Container">
-                <div>
-                    <h1>{console.log(this.state)}</h1>
-
+                <div className="svgbody">
                 </div>
             </div>
         );
     }
 }
 
-export
-default
-LineChart;
+export default LineChart;

@@ -83,7 +83,7 @@ class Portfolio extends Component {
                         <h2>D3 Examples</h2>
                         <ul>
                             <li onClick={this.clickMe}> HeatMap</li>
-                            <li onClick={this.clickMe1}>Bar Diagram</li>
+                            <li onClick={this.clickMe1}>Line Chart</li>
                         </ul>
 
 
