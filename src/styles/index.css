@@ -56,31 +56,6 @@
 .mainBody > img {
   max-width: 100%;
 }
-path {
-  fill: none;
-  stroke: blue;
-  stroke-width: 2px;
-}
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #CCC;
-  shape-rendering: crispEdges;
-}
-.brush .extent {
-  stroke: #fff;
-  fill-opacity: .125;
-  shape-rendering: crispEdges;
-}
-.path_context {
-  stroke: grey;
-  fill: grey;
-}
-.path_temp {
-  fill: none;
-  stroke: url(#line-gradient);
-  stroke-width: 2px;
-}
 .portfolioContainer {
   display: flex;
   height: 100%;
@@ -1653,6 +1628,49 @@ path {
 }
 .contactContainer .right {
   flex: 1;
+}
+circle.overlay {
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+.chart {
+  margin: 20px auto 20px auto;
+  pointer-events: all;
+  display: block;
+}
+#radialHistogram text {
+  text-anchor: middle;
+}
+.pathRadial {
+  stroke: none;
+}
+.pathRadialout {
+  stroke: none;
+}
+path {
+  fill: none;
+  stroke: blue;
+  stroke-width: 2px;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #CCC;
+  shape-rendering: crispEdges;
+}
+.brush .extent {
+  stroke: #fff;
+  fill-opacity: .125;
+  shape-rendering: crispEdges;
+}
+.path_context {
+  stroke: grey;
+  fill: grey;
+}
+.path_temp {
+  fill: none;
+  stroke: url(#line-gradient);
+  stroke-width: 2px;
 }
 .work {
   display: flex;

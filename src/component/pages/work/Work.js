@@ -6,10 +6,13 @@ import * as $ from 'jquery';
 import LineChart from '../d3/lineChart/LineChart'
 import Heatmap from '../d3/heatmap/Heatmap';
 import DonutChart from '../d3/donutChart/DonutChart';
-import DonutChart1 from '../d3/donutChart/DonutChart1'
+import RadialHistogram from '../d3/radialhistogram/RadialHistogram'
 import {mapValues} from 'lodash'
 
-export const d3 = {heatmap: 'heatmap', linechart: 'linechart', donutchart: 'donutchart', donutchart1: 'donutchart1'}
+export const d3 = {
+    heatmap: 'heatmap', linechart: 'linechart', donutchart: 'donutchart',
+    radialhistogram: 'radialhistogram',
+}
 
 
 class Work extends Component {
@@ -23,7 +26,7 @@ class Work extends Component {
             [d3.heatmap]: false,
             [d3.linechart]: false,
             [d3.donutchart]: false,
-            [d3.donutchart1]: false,
+            [d3.radialhistogram]: false,
 
         }
 
@@ -62,7 +65,7 @@ class Work extends Component {
                                 <li data-id={d3.heatmap} onClick={this.clickMe}> HeatMap</li>
                                 <li data-id={d3.linechart} onClick={this.clickMe}>Line Chart</li>
                                 <li data-id={d3.donutchart} onClick={this.clickMe}>Donut Chart</li>
-                                <li data-id={d3.donutchart} onClick={this.clickMe}>Donut Chart 1</li>
+                                <li data-id={d3.radialhistogram} onClick={this.clickMe}>Radial Histogram</li>
                             </ul>
 
 
@@ -79,7 +82,7 @@ class Work extends Component {
                     {this.state[d3.linechart] ? <LineChart/> : ''}
                     {this.state[d3.heatmap] ? <Heatmap/> : ''}
                     {this.state[d3.donutchart] ? <DonutChart/> : ''}
-                    {this.state[d3.donutchart1] ? <DonutChart1/> : ''}
+                    {this.state[d3.radialhistogram] ? <RadialHistogram/> : ''}
                 </div>
 
 

@@ -8,10 +8,11 @@ class DonutChart1 extends Component {
 
     renderDonut() {
 
-        var width = 960,
-            height = 500,
-            radius = Math.min(width, height) / 2;
+        var width = d3.select('.svgbody').property('clientWidth');
+        const height = d3.select('.svgbody').property('clientHeight');
+        const radius = Math.min(width, height) / 2;
 
+        console.log(width,height)
         var min_val = 0;
         var max_val = 1;
 
@@ -34,7 +35,7 @@ class DonutChart1 extends Component {
 
         d3.csv("data1.csv", type, function (error, data) {
             if (error) throw error;
-            svg = d3.select("#donutchart").append("svg")
+            svg = d3.select(".svgbody").append("svg")
                 .attr("width", width)
                 .attr("height", height)
                 .append("g")
@@ -69,6 +70,7 @@ class DonutChart1 extends Component {
 
 
             var pi = Math.PI;
+            var defaultSlider =10;
 
             var scale = d3.scale.linear().domain([min_val, max_val]).range([0, 360]);
             var arc1 = d3.svg.arc()
@@ -100,74 +102,12 @@ class DonutChart1 extends Component {
         }
 
         $('#defaultSlider').change(function () {
+            console.log('dafa')
 
-
-            update();
+          //  update();
         })
 
-        function update() {
-            d3.select("svg").remove();
-            svg = d3.select("#donutchart").append("svg")
-                .attr("width", width)
-                .attr("height", height)
-                .append("g")
-                .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-            d3.csv("data1.csv", type, function (error, data) {
-                if (error) throw error;
 
-                var g = svg.selectAll(".arc")
-                    .data(pie(data))
-                    .enter().append("g")
-                    .attr("class", "arc");
-
-
-                g.append("path")
-                    .attr("d", arc)
-                    .style("fill", 'black')
-                    .style('opacity', function (d) {
-                        return (parseFloat(d.data.colorfill) == 0) ? 0.1 : 0.2;
-                    })
-                    .transition()
-                    .ease("exp")
-                    .duration(2000)
-                    .attrTween("d", tweenPie);
-
-
-                g.append("text")
-                    .transition()
-                    .duration(3000)
-                    .attr("transform", function (d) {
-                        return "translate(" + arc.centroid(d) + ")";
-                    })
-                    .attr("dy", ".35em")
-                    .text(function (d) {
-                        return d.data.colorfill;
-                    })
-
-
-                var pi = Math.PI;
-
-                var scale = d3.scale.linear().domain([min_val, max_val]).range([0, 360]);
-                var arc1 = d3.svg.arc()
-                    .outerRadius(radius - 10)
-                    .innerRadius(radius - 70)
-                    .startAngle(scale((defaultSlider.value)) * (pi / 180)) //converting from degs to radians
-                    .endAngle((scale((defaultSlider.value)) + 1) * (pi / 180)) //just radians
-
-
-                g.append("path")
-
-                    .attr("d", arc1)
-                    .style('opacity', 0)
-                    .transition()
-                    .duration(2000)
-                    .delay(2000)
-                    .style('opacity', 1)
-                    .attr("fill", "blue")
-
-
-            });
-        }
 
         function type(d) {
             d.data = +d.data;
