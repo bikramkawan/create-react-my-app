@@ -56,6 +56,31 @@
 .mainBody > img {
   max-width: 100%;
 }
+path {
+  fill: none;
+  stroke: blue;
+  stroke-width: 2px;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #CCC;
+  shape-rendering: crispEdges;
+}
+.brush .extent {
+  stroke: #fff;
+  fill-opacity: .125;
+  shape-rendering: crispEdges;
+}
+.path_context {
+  stroke: grey;
+  fill: grey;
+}
+.path_temp {
+  fill: none;
+  stroke: url(#line-gradient);
+  stroke-width: 2px;
+}
 .portfolioContainer {
   display: flex;
   height: 100%;
@@ -122,31 +147,6 @@
   flex-grow: 1;
   cursor: pointer;
   margin: 5%;
-}
-path {
-  fill: none;
-  stroke: blue;
-  stroke-width: 2px;
-}
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #CCC;
-  shape-rendering: crispEdges;
-}
-.brush .extent {
-  stroke: #fff;
-  fill-opacity: .125;
-  shape-rendering: crispEdges;
-}
-.path_context {
-  stroke: grey;
-  fill: grey;
-}
-.path_temp {
-  fill: none;
-  stroke: url(#line-gradient);
-  stroke-width: 2px;
 }
 .bar {
   background: lightgray;
@@ -1674,6 +1674,45 @@ path {
 }
 .contactContainer .right {
   flex: 1;
+}
+.work {
+  display: flex;
+}
+.work .left {
+  display: flex;
+  position: absolute;
+  z-index: 9999;
+  width: 15%;
+  height: 80vh;
+}
+.work .left .list {
+  flex-grow: 10;
+  background-color: gainsboro;
+}
+.work .left .list.false {
+  display: none;
+}
+.work .left .hideMe {
+  background-color: grey;
+  flex-grow: 1.5;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.work .left .hideMe.true {
+  position: absolute;
+  width: 10%;
+}
+.work .left .hideMe span {
+  display: flex;
+  align-items: center;
+}
+.work .right {
+  flex-grow: 9;
+}
+.fa.fa-bars {
+  transform: rotate(90deg);
+  margin: 0px;
 }
 body {
   margin: 0;

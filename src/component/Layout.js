@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import Header from '../header/Header';
-import Body from '../body/Body'
-import Footer from '../footer/Footer'
+import Header from './header/Header';
+import Body from './body/Body'
+import Footer from './footer/Footer'
 import {Route} from 'react-router-dom'
-import Contact from './contact/Contact'
-import AboutMe from './aboutme/AboutMe';
-import Portfolio from './portfolio/Portfolio'
+import Contact from './pages/contact/Contact'
+import AboutMe from './pages/aboutme/AboutMe';
+import Portfolio from './pages/portfolio/Portfolio'
+import Work from './pages/work/Work';
 
 
 const Main = () => (
@@ -15,6 +16,7 @@ const Main = () => (
         <Route path='/Contact' component={Contact}/>
         <Route path='/AboutMe' component={AboutMe}/>
         <Route path='/Portfolio' component={Portfolio}/>
+        <Route path='/Work' component={Work}/>
     </div>
 )
 
@@ -25,6 +27,7 @@ class Layout extends Component {
         const headersNames = [
             {label: 'Home', linkTo: 'Home'},
             {label: 'Portfolio', linkTo: 'Portfolio'},
+            {label: 'Work', linkTo: 'Work'},
             {label: 'About Me', linkTo: 'AboutMe'},
             {label: 'Contact Me', linkTo: 'Contact'}];
         return (

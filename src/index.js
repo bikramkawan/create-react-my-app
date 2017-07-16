@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Layout from './component/pages/Layout';
+import Layout from './component/Layout';
 import { HashRouter } from 'react-router-dom'
 
 
