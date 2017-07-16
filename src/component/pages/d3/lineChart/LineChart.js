@@ -188,8 +188,6 @@ class LineChart extends Component {
 
     componentWillUnmount() {
 
-        console.log(this.state)
-
     }
 
 
