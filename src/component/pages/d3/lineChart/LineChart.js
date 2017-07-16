@@ -17,9 +17,6 @@ class LineChart extends Component {
     componentDidMount() {
 
         d3.tsv(tempdata, function (tsvdata) {
-            console.log(tsvdata)
-
-
             const totalwidth = d3.select('.svgbody').property('clientWidth');
             const totalheight = d3.select('.svgbody').property('clientHeight');
 

@@ -79,15 +79,7 @@ class Portfolio extends Component {
                         <img src={wheels} alt={"wheels"} className="animated jello" onMouseOver={this.zoomIn}
                              title="The Wheels" onMouseLeave={this.zoomOut}/>
                     </div>
-                    <div className="d3examples">
-                        <h2>D3 Examples</h2>
-                        <ul>
-                            <li onClick={this.clickMe}> HeatMap</li>
-                            <li onClick={this.clickMe1}>Line Chart</li>
-                        </ul>
 
-
-                    </div>
                 </div>
 
 

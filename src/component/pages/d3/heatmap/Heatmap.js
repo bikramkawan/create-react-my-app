@@ -9,7 +9,6 @@ class Heatmap extends Component {
 
 
     renderHeatMap() {
-
         function heatmapdata(datapoints, min, max) {
             const temparr = [];
             for (let i = 0; i < datapoints; i++) {

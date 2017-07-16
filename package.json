@@ -2,18 +2,9 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://bikramkawan.github.io/create-react-my-app",
   "dependencies": {
-    "gh-pages": "^1.0.0",
-    "lodash": "^4.17.4",
     "react": "^15.5.4",
-    "react-addons-css-transition-group": "^15.6.0",
-    "react-dom": "^15.5.4",
-    "react-fontawesome": "^1.6.1",
-    "react-router-dom": "^4.1.1",
-    "d3": "^3.5.17",
-    "react-router": "^4.1.1",
-    "react-transition-group": "^1.2.0"
+    "react-dom": "^15.5.4"
   },
   "devDependencies": {
     "react-scripts": "1.0.7"
@@ -22,8 +13,6 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   }
 }

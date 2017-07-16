@@ -94,27 +94,6 @@ path {
   border: 5px solid #2fa4e7;
   flex-direction: column;
 }
-.portfolioContainer .left .d3examples {
-  margin-top: 40px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-.portfolioContainer .left .d3examples ul {
-  padding: 0;
-}
-.portfolioContainer .left .d3examples li {
-  padding: 5px;
-  font-size: 20px;
-  background-color: lightgray;
-  height: 40px;
-  border-radius: 11px;
-  border: 2px solid;
-  text-align: center;
-  line-height: 30px;
-  margin-bottom: 10px;
-  list-style-type: none;
-}
 .portfolioContainer .right {
   flex-grow: 1;
   width: 100%;
@@ -1692,6 +1671,27 @@ path {
 .work .left .list.false {
   display: none;
 }
+.work .left .list .d3examples {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.work .left .list .d3examples ul {
+  padding: 0;
+}
+.work .left .list .d3examples li {
+  padding: 5px;
+  font-size: 20px;
+  background-color: lightgray;
+  height: 40px;
+  border-radius: 11px;
+  border: 2px solid;
+  text-align: center;
+  line-height: 30px;
+  margin-bottom: 10px;
+  list-style-type: none;
+}
 .work .left .hideMe {
   background-color: grey;
   flex-grow: 1.5;
@@ -1708,7 +1708,19 @@ path {
   align-items: center;
 }
 .work .right {
-  flex-grow: 9;
+  flex-grow: 1;
+  width: 100%;
+  display: flex;
+  height: 80vh;
+}
+.work .right .d3Container {
+  width: 100%;
+  background: white;
+  display: flex;
+}
+.work .right .d3Container .svgbody {
+  flex-grow: 1;
+  margin: 2%;
 }
 .fa.fa-bars {
   transform: rotate(90deg);
