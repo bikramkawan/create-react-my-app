@@ -5,12 +5,5 @@ cache:
   directories:
   - node_modules
 script:
-  - npm test
+  - npm start
   - npm run build
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: git: https://github.com/ on V1-D20 at 26-Jun-2017 12:21
-  local_dir: build
-  on:
-    branch: master
