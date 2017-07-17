@@ -8,12 +8,6 @@ import tempdata from './temp_data.tsv'
 
 class LineChart extends Component {
 
-    constructor(props) {
-        super(props);
-
-    }
-
-
     componentDidMount() {
 
         d3.tsv(tempdata, function (tsvdata) {
@@ -41,7 +35,7 @@ class LineChart extends Component {
 
             var brush = d3.svg.brush()
                 .x(x2)
-                .on("brush", brush);
+                .on("brush", updateBrush);
 
             var area = function (color) {
                 return d3.svg.area()
@@ -98,7 +92,7 @@ class LineChart extends Component {
 
 
             data.map(function (t) {
-                t.date = new Date(t.date);
+                return t.date = new Date(t.date);
             });
 
             x.domain(d3.extent(data.map(function (d) {
@@ -175,7 +169,7 @@ class LineChart extends Component {
                 .attr("y", -6)
                 .attr("height", height2 + 7);
 
-            function brush() {
+            function updateBrush() {
                 x.domain(brush.empty() ? x2.domain() : brush.extent());
                 focus.selectAll("path.data").attr("d", function (col) {
                     return area(col)(data);

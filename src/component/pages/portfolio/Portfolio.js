@@ -1,16 +1,12 @@
 import React, {Component} from 'react';
-
 import nu from './img/nu.png';
 import revamp from './img/revamp.png';
 import riderz from './img/riderz.png';
 import wheels from './img/wheels.png';
 import portfoliobg from './img/portfoliobg.jpg'
-import ReactCSSTransitionGroup  from "react-addons-css-transition-group";
-import {Link} from 'react-router-dom'
 import Heatmap from '../d3/heatmap/Heatmap';
 import LineChart from '../d3/lineChart/LineChart'
-import * as d3 from 'd3';
-import data from '../d3/lineChart/temp_data.tsv'
+
 
 export const url = {
 
@@ -22,7 +18,7 @@ export const url = {
 
 const WebIframe = ({address}) => {
     return (
-        <iframe className="portfolioURL animated fadeInRight" src={address} frameBorder="0" allowFullScreen>
+        <iframe title='website' className="portfolioURL animated fadeInRight" src={address} frameBorder="0" allowFullScreen>
         </iframe>
     )
 }

@@ -13,7 +13,7 @@ class DonutChart extends Component {
         const o_radius = 40;
         const radiusincrease = 30; // You can increase the radius from here.
 
-        var svg = d3.select(".svgbody").append("svg")
+        d3.select(".svgbody").append("svg")
             .attr("width", width)
             .attr("height", height)
             .append("g")
@@ -34,64 +34,64 @@ class DonutChart extends Component {
         const e_color = ['green', 'green', 'green', 'red', 'red', 'khaki', 'black', 'black', 'khaki', 'blue', 'blue', 'khaki'];
 
         // Inner circle
-        var origin = svg.append("circle").attr({
-            cx: 0,
-            cy: 0,
-            r: o_radius,
-            fill: "none",
-            stroke: "blue"
-        });
+        // var origin = svg.append("circle").attr({
+        //     cx: 0,
+        //     cy: 0,
+        //     r: o_radius,
+        //     fill: "none",
+        //     stroke: "blue"
+        // });
 
         //Circle A
-        var cat1 = svg.append("circle").attr({
-            cx: 0,
-            cy: 0,
-            r: o_radius + radiusincrease,
-            fill: "none",
-            stroke: "blue"
-        });
-
-        // Circle B
-        var cat2 = svg.append("circle").attr({
-            cx: 0,
-            cy: 0,
-            r: o_radius + radiusincrease * 2,
-            fill: "none",
-            stroke: "blue"
-        });
-
-        // Circle C
-
-        var cat3 = svg.append("circle").attr({
-            cx: 0,
-            cy: 0,
-            r: o_radius + radiusincrease * 3,
-            fill: "none",
-            stroke: "blue"
-        });
-
-        // Circle D
-        var cat4 = svg.append("circle").attr({
-            cx: 0,
-            cy: 0,
-            r: o_radius + radiusincrease * 4,
-            fill: "none",
-            stroke: "blue"
-        });
-
-        //Circle E
-        var cat5 = svg.append("circle").attr({
-            cx: 0,
-            cy: 0,
-            r: o_radius + radiusincrease * 5,
-            fill: "none",
-            stroke: "blue"
-        });
+        // var cat1 = svg.append("circle").attr({
+        //     cx: 0,
+        //     cy: 0,
+        //     r: o_radius + radiusincrease,
+        //     fill: "none",
+        //     stroke: "blue"
+        // });
+        //
+        // // Circle B
+        // var cat2 = svg.append("circle").attr({
+        //     cx: 0,
+        //     cy: 0,
+        //     r: o_radius + radiusincrease * 2,
+        //     fill: "none",
+        //     stroke: "blue"
+        // });
+        //
+        // // Circle C
+        //
+        // var cat3 = svg.append("circle").attr({
+        //     cx: 0,
+        //     cy: 0,
+        //     r: o_radius + radiusincrease * 3,
+        //     fill: "none",
+        //     stroke: "blue"
+        // });
+        //
+        // // Circle D
+        // var cat4 = svg.append("circle").attr({
+        //     cx: 0,
+        //     cy: 0,
+        //     r: o_radius + radiusincrease * 4,
+        //     fill: "none",
+        //     stroke: "blue"
+        // });
+        //
+        // //Circle E
+        // var cat5 = svg.append("circle").attr({
+        //     cx: 0,
+        //     cy: 0,
+        //     r: o_radius + radiusincrease * 5,
+        //     fill: "none",
+        //     stroke: "blue"
+        // });
 
 
         // Creating Text elements
         var createElements = function (svg, nodes, elementRadius) {
-            var element = svg.selectAll('text')
+            svg.selectAll('text')
                 .data(nodes)
                 .enter().append('text')
                 .attr('r', elementRadius)

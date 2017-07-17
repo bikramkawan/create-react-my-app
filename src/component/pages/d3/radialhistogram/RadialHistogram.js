@@ -82,7 +82,7 @@ class RadialHistogram extends Component {
                 .attr("x", cx)
                 .attr("y", cy)
                 .attr("font-size", "20px")
-                .text("[Min,Max] = " + "[" + d3.min(histogram, function (d) {
+                .text(`[Min,Max] = [` + d3.min(histogram, function (d) {
                         return d.value
                     }) + "," + d3.max(histogram, function (d) {
                         return d.value
@@ -195,7 +195,7 @@ class RadialHistogram extends Component {
         function hslToRgb(h, s, l) {
             var r, g, b;
 
-            if (s == 0) {
+            if (s === 0) {
                 r = g = b = l; // achromatic
             } else {
                 function hue2rgb(p, q, t) {
