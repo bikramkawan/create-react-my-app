@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
-import Header from './header/Header';
-import Body from './body/Body'
-import Footer from './footer/Footer'
+import Header from './component/header/Header';
+import Body from './component/body/Body'
+import Footer from './component/footer/Footer'
 import {Route} from 'react-router-dom'
-import Contact from './pages/contact/Contact'
-import AboutMe from './pages/aboutme/AboutMe';
-import Portfolio from './pages/portfolio/Portfolio'
-import Work from './pages/work/Work';
+import Contact from './component/pages/contact/Contact'
+import AboutMe from './component/pages/aboutme/AboutMe';
+import Portfolio from './component/pages/portfolio/Portfolio'
+import Work from './component/pages/work/Work';
+import MobileOsVoting from './mobileOSVoting/MobileOsVoting';
 
 
 const Main = () => (
@@ -17,17 +18,20 @@ const Main = () => (
         <Route path='/AboutMe' component={AboutMe}/>
         <Route path='/Portfolio' component={Portfolio}/>
         <Route path='/Work' component={Work}/>
+        <Route path='/Work' component={Work}/>
+        <Route path='/MobileOsVoting' component={MobileOsVoting}/>
     </div>
 )
 
 
-class Layout extends Component {
+class App extends Component {
     render() {
 
         const headersNames = [
             {label: 'Home', linkTo: 'Home'},
             {label: 'Portfolio', linkTo: 'Portfolio'},
             {label: 'Work', linkTo: 'Work'},
+            {label: 'MobileOsVoting', linkTo: 'MobileOsVoting'},
             {label: 'About Me', linkTo: 'AboutMe'},
             {label: 'Contact Me', linkTo: 'Contact'}];
         return (
@@ -45,4 +49,4 @@ class Layout extends Component {
     }
 }
 
-export default Layout;
+export default App;
