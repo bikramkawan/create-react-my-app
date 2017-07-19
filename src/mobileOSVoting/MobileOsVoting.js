@@ -11,7 +11,6 @@ let store = createStore(myApp)
 
 class MobileOsVoting extends Component {
     render() {
-        console.log(store.getState().ios)
         return (
             <div className="container">
                 <App store={store}/>

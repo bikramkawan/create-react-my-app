@@ -20,13 +20,30 @@ class VotingResults extends Component {
     }
 
 
+    calcWidth(name) {
+        return `${this.props.votingResults[name]}%`
+    }
+
+
     render() {
-        console.log(this.props.votingResults)
         return (
-            <div>
-                <span>IOS: {this.props.votingResults.ios}</span>
-                <span>Android: {this.props.votingResults.android}</span>
-                <span>Windows: {this.props.votingResults.windows}</span>
+            <div className="results">
+                <div className="list">
+                    <div className="text">IOS</div>
+                    <div className="bar" style={{width: this.calcWidth('ios')}}>{this.calcWidth('ios')}</div>
+                </div>
+                <div className="list">
+                    <div className="text">Android</div>
+                    <div className="bar"
+                         style={{width: this.calcWidth('android')}}>{this.calcWidth('android')}</div>
+                </div>
+                <div className="list">
+                    <div className="text">Windows</div>
+                    <div className="bar"
+                         style={{width: this.calcWidth('windows')}}>{this.calcWidth('windows')}
+                    </div>
+                </div>
+
             </div>
 
 

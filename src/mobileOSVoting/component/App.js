@@ -3,6 +3,10 @@
  */
 import React, {Component} from 'react';
 import {voteIos, voteAndroid, voteWindows} from '../actions'
+import ios from '../assets/ios.png';
+import android from '../assets/android.png';
+import windows from '../assets/windows.png';
+
 
 class App extends Component {
 
@@ -30,21 +34,23 @@ class App extends Component {
     render() {
 
         return (
-            <div>
-                <div>
-                    <h2>What is your favorite mobile ?</h2>
-                    <h4>Click on the logos below to vote!</h4>
-                    <br />
-                    <div className="row">
-                        <div className="col-xs-offset-3 col-xs-2" onClick={this.onClickIos}> Vote IOS
-                        </div>
-                        <div className="col-xs-offset-3 col-xs-2" onClick={this.onClickAndroid}> Vote Android
-                        </div>
-                        <div className="col-xs-offset-3 col-xs-2" onClick={this.onClickWindows}> Vote Windows
-                        </div>
+            <div className="votingwrapper">
+                <h1 className="title">What is your favorite mobile ?</h1>
+                <h4>Click on the logos below to vote!</h4>
+                <br />
+                <div className="optionContainer">
+                    <div className="ositem" onClick={this.onClickIos}>
+                        <img src={ios} alt="IOS"></img>
+                    </div>
+                    <div className="ositem" onClick={this.onClickAndroid}>
+                        <img src={android} alt="ANdroid"></img>
+                    </div>
+                    <div className="ositem" onClick={this.onClickWindows}>
+                        <img src={windows} alt="Windows"></img>
                     </div>
                 </div>
             </div>
+
         )
 
     }

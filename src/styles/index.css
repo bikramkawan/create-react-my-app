@@ -28,6 +28,7 @@
 }
 .wrapper {
   height: 80vh;
+  overflow: auto;
 }
 .wrapper > div {
   max-height: 80vh;
@@ -1742,6 +1743,46 @@ path {
 .fa.fa-bars {
   transform: rotate(90deg);
   margin: 0px;
+}
+.votingwrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.votingwrapper .optionContainer {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-around;
+  width: 40%;
+  height: 24vh;
+}
+.votingwrapper .optionContainer .ositem {
+  flex: 1;
+}
+.votingwrapper .optionContainer .ositem img {
+  height: 100%;
+  width: 100%;
+}
+.results {
+  display: flex;
+  flex-direction: column;
+  background: aliceblue;
+  height: 25vh;
+}
+.results .list {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  font-size: 40px;
+}
+.results .list .text {
+  width: 200px;
+}
+.results .list .bar {
+  background-color: grey;
+  height: 80%;
+  text-align: center;
+  line-height: 40px;
 }
 body {
   margin: 0;
