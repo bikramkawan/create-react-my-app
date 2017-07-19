@@ -5,13 +5,3 @@ node_js:
 script:
   - npm test
   - npm run build
-  - npm run deploy
-deploy:
-  provider: pages
-  local_dir: build
-  repo: bikramkawan/create-react-my-app
-  target_branch: master
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
-  on:
-    branch: master
