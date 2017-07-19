@@ -32,7 +32,7 @@ class App extends Component {
         return (
             <div>
                 <div>
-                    <h2>What is your favorite front-end framework in 2017?</h2>
+                    <h2>What is your favorite mobile ?</h2>
                     <h4>Click on the logos below to vote!</h4>
                     <br />
                     <div className="row">

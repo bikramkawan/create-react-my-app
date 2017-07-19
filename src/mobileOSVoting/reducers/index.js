@@ -13,7 +13,7 @@ export default (state = initialState, action) => {
     switch (action.type) {
 
         case 'VOTE_IOS':
-            console.log('iosafafa',action,state.ios + 1)
+              console.log('ios')
             return Object.assign({}, state, {
                 ios: state.ios + 1
             })
