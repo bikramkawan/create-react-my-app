@@ -8,6 +8,7 @@ import Heatmap from '../d3/heatmap/Heatmap';
 import DonutChart from '../d3/donutChart/DonutChart';
 import RadialHistogram from '../d3/radialhistogram/RadialHistogram'
 import {mapValues} from 'lodash'
+import MobileOsVoting from '../../../mobileOSVoting/MobileOsVoting';
 
 export const d3 = {
     heatmap: 'heatmap', linechart: 'linechart', donutchart: 'donutchart',
@@ -27,6 +28,7 @@ class Work extends Component {
             [d3.linechart]: false,
             [d3.donutchart]: false,
             [d3.radialhistogram]: false,
+            isVoting: false
 
         }
 
@@ -46,10 +48,14 @@ class Work extends Component {
 
 
     clickMe = ({target}) => {
+        this.setState({isVoting: false});
         const id = target.getAttribute('data-id');
         mapValues(d3, (value, key) => (key !== id) ? this.setState({[d3[key]]: false}) : this.setState({[d3[id]]: true})
         );
+    }
 
+    mobileVoting = ()=> {
+        this.setState({isVoting: true})
     }
 
 
@@ -68,7 +74,7 @@ class Work extends Component {
                                 <li data-id={d3.radialhistogram} onClick={this.clickMe}>Radial Histogram</li>
                             </ul>
 
-
+                            <h2 onClick={this.mobileVoting}>Mobile Voting</h2>
                         </div>
                     </div>
 
@@ -83,6 +89,7 @@ class Work extends Component {
                     {this.state[d3.heatmap] ? <Heatmap/> : ''}
                     {this.state[d3.donutchart] ? <DonutChart/> : ''}
                     {this.state[d3.radialhistogram] ? <RadialHistogram/> : ''}
+                    {this.state.isVoting ? <MobileOsVoting/> : ''}
                 </div>
 
 

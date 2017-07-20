@@ -1699,6 +1699,9 @@ path {
 .work .left .list .d3examples ul {
   padding: 0;
 }
+.work .left .list .d3examples h2 {
+  cursor: pointer;
+}
 .work .left .list .d3examples li {
   padding: 5px;
   font-size: 20px;
@@ -1710,6 +1713,7 @@ path {
   line-height: 30px;
   margin-bottom: 10px;
   list-style-type: none;
+  cursor: pointer;
 }
 .work .left .hideMe {
   background-color: grey;
