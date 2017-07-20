@@ -1590,23 +1590,14 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  margin-left: 40px;
   margin-right: 20px;
-  margin-top: 20px;
+  margin-left: 60px;
+  justify-content: space-around;
 }
 .contactContainer .left .address {
   display: flex;
   justify-content: space-between;
   height: 20%;
-}
-.contactContainer .left .map {
-  height: 30%;
-  width: 100%;
-  margin-bottom: 10px;
-}
-.contactContainer .left .map iframe {
-  width: 100%;
-  height: 100%;
 }
 .contactContainer .left .formContainer {
   display: flex;
@@ -1628,7 +1619,19 @@
   margin-top: 3px;
 }
 .contactContainer .right {
+  position: relative;
   flex: 1;
+}
+.contactContainer .right .map {
+  height: 30%;
+  width: 100%;
+  margin-bottom: 10px;
+  position: absolute;
+  bottom: 0;
+}
+.contactContainer .right .map iframe {
+  width: 100%;
+  height: 100%;
 }
 circle.overlay {
   -webkit-transition: opacity 0.5s;

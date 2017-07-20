@@ -65,12 +65,13 @@ class Contact extends Component {
                 <div className="left">
                     <ContactMe/>
                     <Address/>
-                    <Map/>
+
                     <Form/>
                 </div>
 
                 <div className="right">
                     <img style={{width: '100%', height: '100%'}} src={contactimg} alt={"nu"}/>
+                    <Map/>
                 </div>
 
             </div>
