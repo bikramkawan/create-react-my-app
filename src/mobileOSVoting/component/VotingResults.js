@@ -6,9 +6,7 @@ import {connect} from 'react-redux'
 
 
 const mapStateToProps = state => {
-    return {
-        votingResults: state
-    }
+    return { ...state }
 }
 class VotingResults extends Component {
 
@@ -21,7 +19,7 @@ class VotingResults extends Component {
 
 
     calcWidth(name) {
-        return `${this.props.votingResults[name]}%`
+        return `${this.props[name]}%`
     }
 
 
@@ -53,5 +51,4 @@ class VotingResults extends Component {
 
 
 }
-
 export default connect(mapStateToProps)(VotingResults);
