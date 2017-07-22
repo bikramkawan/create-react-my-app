@@ -3,7 +3,16 @@ import contactimg from './contactbg.jpg';
 
 const ContactMe = () => (
     <div className="contactMe">
-        <h2>Contact Me</h2>
+        <span><h2>Contact Me</h2>
+            <div className="socialIcons">
+                <a href="https://twitter.com/bikramkawan">
+                    <i className="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
+                <a href="https://www.instagram.com/bikramkawan/">
+                    <i className="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
+                <a href="http://www.github.com/bikramkawan">
+                    <i className="fa fa-github fa-2x" aria-hidden="true"></i></a>
+            </div>
+        </span>
         <h4>Let me hear from you!</h4>
     </div>
 )

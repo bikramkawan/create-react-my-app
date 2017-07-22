@@ -1594,10 +1594,25 @@
   margin-left: 60px;
   justify-content: space-around;
 }
+.contactContainer .left .contactMe span {
+  display: flex;
+  justify-content: space-between;
+}
+.contactContainer .left .contactMe span div {
+  display: flex;
+  align-items: center;
+}
+.contactContainer .left .contactMe span div a :hover {
+  color: #2fa4e7;
+  transform: scale(1.5);
+}
 .contactContainer .left .address {
   display: flex;
   justify-content: space-between;
   height: 20%;
+}
+.contactContainer .left .address .fa:hover {
+  color: #2fa4e7;
 }
 .contactContainer .left .formContainer {
   display: flex;
