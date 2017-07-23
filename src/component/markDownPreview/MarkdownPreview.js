@@ -11,13 +11,13 @@ class MarkdownPreview extends Component {
     renderText = () => {
 
         const inputText = $('.inputText').val();
-        const renderText = $('.right');
+        const renderText = $('.markdownright');
         renderText.html(marked(inputText))
 
     }
 
     componentDidMount() {
-        const renderText = $('.right');
+        const renderText = $('.markdownright');
         const sampleText = $('.inputText').val();
         renderText.html(marked(sampleText));
 
@@ -36,12 +36,12 @@ class MarkdownPreview extends Component {
         return (
 
             <div className="markdown">
-                <div className="left">
+                <div className="markdownleft">
                     <textarea className="inputText" onChange={this.renderText}>
                         {sampleText}
                     </textarea>
                 </div>
-                <div className="right"></div>
+                <div className="markdownright"></div>
 
             </div>
 

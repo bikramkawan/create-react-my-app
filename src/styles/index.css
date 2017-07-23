@@ -1808,17 +1808,19 @@ path {
 }
 .markdown {
   display: flex;
-}
-.markdown .left {
-  display: flex;
   flex-basis: 100%;
 }
-.markdown .left .inputText {
+.markdown .markdownleft {
+  display: flex;
+  flex-basis: 100%;
+  margin-left: 25px;
+}
+.markdown .markdownleft .inputText {
   height: 100%;
   flex-grow: 1;
   flex-basis: 100%;
 }
-.markdown .right {
+.markdown .markdownright {
   height: 100%;
   flex-basis: 100%;
 }
