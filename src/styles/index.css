@@ -1806,6 +1806,22 @@ path {
   text-align: center;
   line-height: 40px;
 }
+.markdown {
+  display: flex;
+}
+.markdown .left {
+  display: flex;
+  flex-basis: 100%;
+}
+.markdown .left .inputText {
+  height: 100%;
+  flex-grow: 1;
+  flex-basis: 100%;
+}
+.markdown .right {
+  height: 100%;
+  flex-basis: 100%;
+}
 body {
   margin: 0;
   padding: 0;

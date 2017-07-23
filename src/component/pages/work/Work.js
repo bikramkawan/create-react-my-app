@@ -9,6 +9,7 @@ import DonutChart from '../d3/donutChart/DonutChart';
 import RadialHistogram from '../d3/radialhistogram/RadialHistogram'
 import {mapValues} from 'lodash'
 import MobileOsVoting from '../../../mobileOSVoting/MobileOsVoting';
+import MarkdownPreview from '../../markDownPreview/MarkdownPreview'
 
 export const d3 = {
     heatmap: 'heatmap', linechart: 'linechart', donutchart: 'donutchart',
@@ -28,7 +29,8 @@ class Work extends Component {
             [d3.linechart]: false,
             [d3.donutchart]: false,
             [d3.radialhistogram]: false,
-            isVoting: false
+            isVoting: false,
+            isMarkdown: false
 
         }
 
@@ -58,6 +60,9 @@ class Work extends Component {
         this.setState({isVoting: true})
     }
 
+    onClickMarkdown = ()=> {
+        this.setState({isMarkdown: true})
+    }
 
     render() {
 
@@ -75,6 +80,7 @@ class Work extends Component {
                             </ul>
 
                             <h2 onClick={this.mobileVoting}>Mobile Voting</h2>
+                            <h2 onClick={this.onClickMarkdown}>Markdown Preview</h2>
                         </div>
                     </div>
 
@@ -90,6 +96,7 @@ class Work extends Component {
                     {this.state[d3.donutchart] ? <DonutChart/> : ''}
                     {this.state[d3.radialhistogram] ? <RadialHistogram/> : ''}
                     {this.state.isVoting ? <MobileOsVoting/> : ''}
+                    {this.state.isMarkdown ? <MarkdownPreview/> : ''}
                 </div>
 
 
