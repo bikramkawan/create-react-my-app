@@ -1,4 +1,4 @@
-Simple portfolio app [![Build Status](https://travis-ci.org/bikramkawan/create-react-my-app.png?branch=master)](https://travis-ci.org/bikramkawan/create-react-my-app)
+Simple portfolio app [![Build Status](https://travis-ci.org/bikramkawan/portfolio.png?branch=master)](https://travis-ci.org/bikramkawan/portfolio)
 
 View Live: https://bikramkawan.github.io/create-react-my-app/ 
 
