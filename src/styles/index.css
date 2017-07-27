@@ -61,6 +61,10 @@
   display: flex;
   height: 100%;
 }
+.portfolioContainer h1 {
+  border-bottom: 2px solid;
+  cursor: pointer;
+}
 .portfolioContainer .left {
   flex-grow: 1;
   width: 100%;
@@ -69,6 +73,38 @@
   overflow: auto;
   border: 5px solid #2fa4e7;
   flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.portfolioContainer .left .iframe {
+  display: none;
+  overflow: auto;
+  position: absolute;
+  background: white;
+  z-index: 9999;
+  top: 20vh;
+  left: 20vw;
+  height: 60vh;
+  width: 60vw;
+}
+.portfolioContainer .left .iframe .d3Container {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  display: flex;
+}
+.portfolioContainer .left .iframe .d3Container .svgbody {
+  flex-grow: 1;
+  width: 100%;
+  height: 100%;
+}
+.portfolioContainer .left .iframe .d3Container .svgbody svg {
+  margin: 0;
+}
+.portfolioContainer .left .iframe iframe {
+  width: 100%;
+  height: 100%;
 }
 .portfolioContainer .right {
   flex-grow: 1;
@@ -85,23 +121,70 @@
   flex-grow: 1;
   margin: 2%;
 }
-.portfolio > img {
-  margin: 2.5%;
-  height: 20%;
+.portfolioContainer .d3examples {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 60%;
+}
+.portfolioContainer .d3examples h1 {
+  margin-bottom: 35px;
+}
+.portfolioContainer .d3examples ul {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.portfolioContainer .d3examples ul li {
+  padding: 5px;
+  font-size: 20px;
+  background-color: lightgray;
+  height: 40px;
+  border-radius: 11px;
+  border: 2px solid;
+  text-align: center;
+  line-height: 30px;
+  margin-bottom: 10px;
+  list-style-type: none;
+  cursor: pointer;
+}
+.portfolio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.portfolio h1 {
+  margin-top: 10px;
+}
+.portfolio .websites {
+  flex-grow: 1;
+  display: flex;
+  height: 100%;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.portfolio .websites > img {
+  height: 100%;
   -ms-flex-positive: 1;
   box-shadow: 6px 6px darkgrey;
-  width: 20%;
+  width: 10%;
 }
-.portfolio > img:hover {
+.portfolio .websites > img:hover {
   border: solid;
   transform: scale(10.3);
 }
-.portfolioURL {
-  background-color: aliceblue;
-  opacity: 0.5;
-  flex-grow: 1;
-  cursor: pointer;
-  margin: 5%;
+.fa.fa-times-circle {
+  display: none;
+  position: absolute;
+  background: gainsboro;
+  z-index: 9999;
+  top: 20vh;
+  left: 80vw;
+  height: 40px;
+  width: 40px;
+  margin-left: -40px;
+  margin-top: -40px;
+  text-align: center;
 }
 .bar {
   background: lightgray;
@@ -230,7 +313,7 @@
   left: 0%;
   width: 100%;
   height: 100%;
-  background-color: black;
+  background-color: dimgray;
   z-index: 1001;
   -moz-opacity: 0.8;
   opacity: .80;
@@ -1707,31 +1790,6 @@ path {
 }
 .work .left .list.false {
   display: none;
-}
-.work .left .list .d3examples {
-  margin-top: 40px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-.work .left .list .d3examples ul {
-  padding: 0;
-}
-.work .left .list .d3examples h2 {
-  cursor: pointer;
-}
-.work .left .list .d3examples li {
-  padding: 5px;
-  font-size: 20px;
-  background-color: lightgray;
-  height: 40px;
-  border-radius: 11px;
-  border: 2px solid;
-  text-align: center;
-  line-height: 30px;
-  margin-bottom: 10px;
-  list-style-type: none;
-  cursor: pointer;
 }
 .work .left .hideMe {
   background-color: grey;

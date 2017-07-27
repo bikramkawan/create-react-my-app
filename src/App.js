@@ -17,7 +17,6 @@ const Main = () => (
         <Route path='/Contact' component={Contact}/>
         <Route path='/AboutMe' component={AboutMe}/>
         <Route path='/Portfolio' component={Portfolio}/>
-        <Route path='/Work' component={Work}/>
 
     </div>
 )
@@ -29,8 +28,7 @@ class App extends Component {
         const headersNames = [
             {label: 'Home', linkTo: 'Home'},
             {label: 'Portfolio', linkTo: 'Portfolio'},
-            {label: 'Work', linkTo: 'Work'},
-            {label: 'About Me', linkTo: 'AboutMe'},
+             {label: 'About Me', linkTo: 'AboutMe'},
             {label: 'Contact Me', linkTo: 'Contact'}];
         return (
             <div className="root">
