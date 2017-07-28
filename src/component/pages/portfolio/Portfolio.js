@@ -70,33 +70,28 @@ class Portfolio extends Component {
         this.setState({isVoting: false});
         const id = target.getAttribute('data-id');
         this.showOverlay();
-        mapValues(d3, (value, key) => (key !== id) ? this.setState({[d3[key]]: false}) : this.setState({[d3[id]]: true}));
-        this.setState({isVoting: false,isMarkdown:false,displayIframe:true})
+        this.setState({[d3[id]]: true});
+
     }
 
     mobileVoting = ()=> {
         this.showOverlay();
-        this.setState({isVoting: true,isMarkdown:false,displayIframe:false})
+        this.setState({isVoting: true})
     }
 
     onClickMarkdown = ()=> {
         this.showOverlay();
-        this.setState({isMarkdown: true,isVoting:false,displayIframe:false})
+        this.setState({isMarkdown: true})
     }
 
     hideBlock =()=>{
         $('.fade').hide();
         $('.iframe').hide();
         $('.fa-times-circle').hide();
-       // this.setState({displayIframe:!this.state.displayIframe})
+        this.setState({isMarkdown: false,isVoting:false,displayIframe:false})
+        mapValues(d3, (value, key) => this.setState({[d3[key]]: false}));
 
     }
-
-componentWillReceiveProps(nextProps){
-         console.log(nextProps)
-}
-
-
 
     render() {
         return (

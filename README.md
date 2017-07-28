@@ -1,6 +1,6 @@
 Simple portfolio app [![Build Status](https://travis-ci.org/bikramkawan/portfolio.png?branch=master)](https://travis-ci.org/bikramkawan/portfolio)
 
-View Live: https://bikramkawan.github.io/create-react-my-app/ 
+View Live: https://bikramkawan.github.io/
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
