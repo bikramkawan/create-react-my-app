@@ -6,7 +6,6 @@ import {Route} from 'react-router-dom'
 import Contact from './component/pages/contact/Contact'
 import AboutMe from './component/pages/aboutme/AboutMe';
 import Portfolio from './component/pages/portfolio/Portfolio'
-import Calculator from './component/pages/calculator/Calculator'
 
 
 
@@ -17,7 +16,7 @@ const Main = () => (
         <Route path='/Contact' component={Contact}/>
         <Route path='/AboutMe' component={AboutMe}/>
         <Route path='/Portfolio' component={Portfolio}/>
-        <Route path='/Calculator' component={Calculator}/>
+
     </div>
 )
 
@@ -28,8 +27,7 @@ class App extends Component {
         const headersNames = [
             {label: 'Home', linkTo: 'Home'},
             {label: 'Portfolio', linkTo: 'Portfolio'},
-            {label: 'Calculator', linkTo: 'Calculator'},
-             {label: 'About Me', linkTo: 'AboutMe'},
+            {label: 'About Me', linkTo: 'AboutMe'},
             {label: 'Contact Me', linkTo: 'Contact'}];
         return (
             <div className="root">

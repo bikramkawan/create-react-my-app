@@ -9,7 +9,9 @@ import DonutChart from '../d3/donutChart/DonutChart';
 import RadialHistogram from '../d3/radialhistogram/RadialHistogram'
 import {mapValues} from 'lodash'
 import MobileOsVoting from '../../../mobileOSVoting/MobileOsVoting';
-import MarkdownPreview from '../../markDownPreview/MarkdownPreview'
+import MarkdownPreview from '../../markDownPreview/MarkdownPreview';
+import Calculator from  '../calculator/Calculator';
+
 import * as $ from 'jquery';
 
 
@@ -45,23 +47,24 @@ class Portfolio extends Component {
             [d3.donutchart]: false,
             [d3.radialhistogram]: false,
             isVoting: false,
-            isMarkdown: false
+            isMarkdown: false,
+            isCalculator: false
         };
     }
 
-     showOverlay(){
-         $('.fade').show();
-         $('.iframe').show();
-         $('.fa-times-circle').show();
-     }
+    showOverlay() {
+        $('.fade').show();
+        $('.iframe').show();
+        $('.fa-times-circle').show();
+    }
 
     handleImage = ({target: {alt}}) => {
         const that = this;
         this.showOverlay();
-        this.setState({displayIframe:true,url: alt});
-        $(document).keyup(function(e) {
+        this.setState({displayIframe: true, url: alt});
+        $(document).keyup(function (e) {
             if (e.keyCode === 27) {
-             that.hideBlock();
+                that.hideBlock();
             }
         });
 
@@ -84,11 +87,16 @@ class Portfolio extends Component {
         this.setState({isMarkdown: true})
     }
 
-    hideBlock =()=>{
+    onClickCalc = () => {
+        this.showOverlay();
+        this.setState({isCalculator: true})
+    }
+
+    hideBlock = ()=> {
         $('.fade').hide();
         $('.iframe').hide();
         $('.fa-times-circle').hide();
-        this.setState({isMarkdown: false,isVoting:false,displayIframe:false})
+        this.setState({isMarkdown: false, isVoting: false, displayIframe: false, isCalculator: false})
         mapValues(d3, (value, key) => this.setState({[d3[key]]: false}));
 
     }
@@ -105,7 +113,7 @@ class Portfolio extends Component {
                             <img src={revamp} alt={"revamp"} className="animated jello"
                                  title="Revamp Wear" onClick={this.handleImage}/>
                             <img src={riderz} alt={"riderz"} className="animated jello"
-                                 title="Riderz Nepal"onClick={this.handleImage}/>
+                                 title="Riderz Nepal" onClick={this.handleImage}/>
                             <img src={wheels} alt={"wheels"} className="animated jello" onClick={this.handleImage}
                                  title="The Wheels"/>
                         </div>
@@ -123,15 +131,17 @@ class Portfolio extends Component {
 
                     <h1 onClick={this.mobileVoting}>Mobile Voting</h1>
                     <h1 onClick={this.onClickMarkdown}>Markdown Preview</h1>
+                    <h1 onClick={this.onClickCalc}>Calculator</h1>
 
-                    <div className="iframe" >
-                        {this.state.displayIframe?<WebIframe address={url[this.state.url]}/>:''}
+                    <div className="iframe">
+                        {this.state.displayIframe ? <WebIframe address={url[this.state.url]}/> : ''}
                         {this.state[d3.linechart] ? <LineChart display={this.state.displayIframe}/> : ''}
                         {this.state[d3.heatmap] ? <Heatmap display={this.state.displayIframe}/> : ''}
                         {this.state[d3.donutchart] ? <DonutChart display={this.state.displayIframe}/> : ''}
                         {this.state[d3.radialhistogram] ? <RadialHistogram display={this.state.displayIframe}/> : ''}
                         {this.state.isVoting ? <MobileOsVoting/> : ''}
                         {this.state.isMarkdown ? <MarkdownPreview/> : ''}
+                        {this.state.isCalculator ? <Calculator/> : ''}
 
                     </div>
                     <i className="fa fa-times-circle fa-3x" aria-hidden="true" onClick={this.hideBlock}></i>
