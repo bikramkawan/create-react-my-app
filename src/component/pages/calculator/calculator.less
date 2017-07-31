@@ -1,0 +1,44 @@
+
+.calcContainer{
+  display: flex;
+  height:40vh;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  & div{
+    border:1px solid;
+  }
+  & span{
+    border:1px solid;
+  }
+
+  .buttonsContainer{
+    flex-basis: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 40px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    .mybutton{
+    flex-grow: 1;
+    flex-basis: 100/4%;
+     &.number{
+       background-color: #d2d2d2;
+       &.zero-btn{
+         flex-basis: 50%;
+       }
+     }
+     &.result{
+        flex-basis: 100%;
+        background-color: black;
+        color: white;
+       text-align: right;
+      }
+      &.operator{
+       background-color: #f98110;
+      }
+     }
+  }
+}
