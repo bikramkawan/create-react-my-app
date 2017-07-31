@@ -1882,6 +1882,47 @@ path {
   height: 100%;
   flex-basis: 100%;
 }
+.calcContainer {
+  display: flex;
+  height: 40vh;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.calcContainer div {
+  border: 1px solid;
+}
+.calcContainer span {
+  border: 1px solid;
+}
+.calcContainer .buttonsContainer {
+  flex-basis: 40%;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 40px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.calcContainer .buttonsContainer .mybutton {
+  flex-grow: 1;
+  flex-basis: 25%;
+}
+.calcContainer .buttonsContainer .mybutton.number {
+  background-color: #d2d2d2;
+}
+.calcContainer .buttonsContainer .mybutton.number.zero-btn {
+  flex-basis: 50%;
+}
+.calcContainer .buttonsContainer .mybutton.result {
+  flex-basis: 100%;
+  background-color: black;
+  color: white;
+  text-align: right;
+}
+.calcContainer .buttonsContainer .mybutton.operator {
+  background-color: #f98110;
+}
 body {
   margin: 0;
   padding: 0;
