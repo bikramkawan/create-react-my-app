@@ -1919,6 +1919,94 @@ path {
   background-color: #f98110;
   color: white;
 }
+.clockContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+.clockContainer .title {
+  font-size: 60px;
+  margin-bottom: 2%;
+  background: gainsboro;
+  border-radius: 8%;
+  border: 1px solid;
+  padding: 5px;
+}
+.clockContainer .counterContainer {
+  display: flex;
+  width: 100%;
+}
+.clockContainer .counterContainer.isPlay {
+  opacity: 0.5;
+}
+.clockContainer .counterContainer .counter {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-basis: 50%;
+}
+.clockContainer .counterContainer .counter.isPlay {
+  background-color: darkgrey;
+}
+.clockContainer .counterContainer .counter.isPlay .fa {
+  cursor: default;
+}
+.clockContainer .counterContainer .counter p {
+  font-size: 31px;
+  text-align: center;
+}
+.clockContainer .counterContainer .counter.transparent {
+  background-color: white !important;
+}
+.clockContainer .counterContainer .counter .counterWrapper {
+  display: flex;
+  font-size: 18px;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+}
+.clockContainer .buttons {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2%;
+}
+.clockContainer .buttons .pause {
+  display: none;
+}
+.clockContainer .buttons .stop {
+  display: none;
+}
+.clockContainer .outerCicle {
+  margin-top: 5%;
+  height: 300px;
+  width: 300px;
+  border: 2px solid black;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2%;
+}
+.clockContainer .outerCicle .sessionName {
+  font-size: 36px;
+  margin-top: 24%;
+  text-align: center;
+}
+.clockContainer .outerCicle .timer {
+  font-size: 36px;
+  margin-top: 3%;
+  text-align: center;
+}
+.clockContainer .outerCicle .innerCircle {
+  background: #99CC00;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: -1;
+  position: absolute;
+}
 body {
   margin: 0;
   padding: 0;

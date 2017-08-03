@@ -11,6 +11,7 @@ import {mapValues} from 'lodash'
 import MobileOsVoting from '../../../mobileOSVoting/MobileOsVoting';
 import MarkdownPreview from '../../markDownPreview/MarkdownPreview';
 import Calculator from  '../calculator/Calculator';
+import PomodoroClock from '../pomodoroClock/PomodoroClock';
 
 import * as $ from 'jquery';
 
@@ -48,7 +49,8 @@ class Portfolio extends Component {
             [d3.radialhistogram]: false,
             isVoting: false,
             isMarkdown: false,
-            isCalculator: false
+            isCalculator: false,
+            isClock: false
         };
     }
 
@@ -92,6 +94,11 @@ class Portfolio extends Component {
         this.setState({isCalculator: true})
     }
 
+    onClickClock = () => {
+        this.showOverlay();
+        this.setState({isClock: true})
+    }
+
     hideBlock = ()=> {
         $('.fade').hide();
         $('.iframe').hide();
@@ -132,6 +139,7 @@ class Portfolio extends Component {
                     <h1 onClick={this.mobileVoting}>Mobile Voting</h1>
                     <h1 onClick={this.onClickMarkdown}>Markdown Preview</h1>
                     <h1 onClick={this.onClickCalc}>Calculator</h1>
+                    <h1 onClick={this.onClickClock}>Pomodoro Clock</h1>
 
                     <div className="iframe">
                         {this.state.displayIframe ? <WebIframe address={url[this.state.url]}/> : ''}
@@ -142,6 +150,7 @@ class Portfolio extends Component {
                         {this.state.isVoting ? <MobileOsVoting/> : ''}
                         {this.state.isMarkdown ? <MarkdownPreview/> : ''}
                         {this.state.isCalculator ? <Calculator/> : ''}
+                        {this.state.isClock ? <PomodoroClock/> : ''}
 
                     </div>
                     <i className="fa fa-times-circle fa-3x" aria-hidden="true" onClick={this.hideBlock}></i>

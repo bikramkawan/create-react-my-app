@@ -1,0 +1,93 @@
+.clockContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  .title {
+    font-size: 60px;
+    margin-bottom: 2%;
+    background: gainsboro;
+    border-radius: 8%;
+    border: 1px solid;
+    padding: 5px;
+  }
+  .counterContainer {
+    display: flex;
+    width: 100%;
+    &.isPlay {
+      opacity: 0.5;
+    }
+    .counter {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      flex-basis: 50%;
+      &.isPlay {
+        background-color: darkgrey;
+        .fa {
+          cursor: default;
+        }
+
+      }
+      p {
+        font-size: 31px;
+        text-align: center;
+      }
+      &.transparent {
+        background-color: white !important;
+      }
+      .counterWrapper {
+        display: flex;
+        font-size: 18px;
+        justify-content: space-around;
+        align-items: center;
+        padding: 20px;
+      }
+    }
+  }
+
+  .buttons {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2%;
+    .pause {
+      display: none;
+    }
+    .stop {
+      display: none;
+    }
+  }
+
+  .outerCicle {
+    margin-top: 5%;
+    height: 300px;
+    width: 300px;
+    border: 2px solid black;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 2%;
+    .sessionName {
+      font-size: 36px;
+      margin-top: 24%;
+      text-align: center;
+    }
+    .timer {
+      font-size: 36px;
+      margin-top: 3%;
+      text-align: center;
+    }
+    .innerCircle {
+      background: #99CC00;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      z-index: -1;
+      // height: 20%;
+      position: absolute;
+    }
+  }
+
+}
