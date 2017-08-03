@@ -19,6 +19,7 @@
       opacity: 0.5;
     }
     .counter {
+
       display: flex;
       flex-direction: column;
       flex-grow: 1;
@@ -54,9 +55,14 @@
     margin-top: 2%;
     .pause {
       display: none;
+      color: darkblue;
     }
     .stop {
       display: none;
+      color: red;
+    }
+    .play {
+      color: green;
     }
   }
 
@@ -71,13 +77,20 @@
     margin-bottom: 2%;
     .sessionName {
       font-size: 36px;
-      margin-top: 24%;
+      margin-top: 0;
+      position: absolute;
+      top: 30%;
+      left: 30%;
       text-align: center;
+
     }
     .timer {
       font-size: 36px;
-      margin-top: 3%;
       text-align: center;
+      margin: 0px;
+      position: absolute;
+      top: 59%;
+      left: 38%;
     }
     .innerCircle {
       background: #99CC00;

@@ -1975,9 +1975,14 @@ path {
 }
 .clockContainer .buttons .pause {
   display: none;
+  color: darkblue;
 }
 .clockContainer .buttons .stop {
   display: none;
+  color: red;
+}
+.clockContainer .buttons .play {
+  color: green;
 }
 .clockContainer .outerCicle {
   margin-top: 5%;
@@ -1991,13 +1996,19 @@ path {
 }
 .clockContainer .outerCicle .sessionName {
   font-size: 36px;
-  margin-top: 24%;
+  margin-top: 0;
+  position: absolute;
+  top: 30%;
+  left: 30%;
   text-align: center;
 }
 .clockContainer .outerCicle .timer {
   font-size: 36px;
-  margin-top: 3%;
   text-align: center;
+  margin: 0px;
+  position: absolute;
+  top: 59%;
+  left: 38%;
 }
 .clockContainer .outerCicle .innerCircle {
   background: #99CC00;
