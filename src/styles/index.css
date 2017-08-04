@@ -2018,6 +2018,47 @@ path {
   z-index: -1;
   position: absolute;
 }
+.tictacContainer {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.tictacContainer .result {
+  display: flex;
+  background: aliceblue;
+  width: 50vw;
+  height: 10vh;
+  justify-content: space-between;
+  align-items: center;
+}
+.tictacContainer .board {
+  display: flex;
+  height: 40vh;
+  width: 50vw;
+  background: darkgrey;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+}
+.tictacContainer .board.isGameOver {
+  cursor: default;
+  background: darkgrey;
+  opacity: 0.5;
+}
+.tictacContainer .board .ticrow {
+  display: flex;
+  height: 33%;
+  width: 100%;
+}
+.tictacContainer .board .ticrow .ticcol {
+  flex: 1;
+  border: 1px solid;
+  font-size: 90px;
+  text-align: center;
+}
 body {
   margin: 0;
   padding: 0;
