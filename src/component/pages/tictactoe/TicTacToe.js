@@ -22,7 +22,10 @@ class TicTacToe extends Component {
         this.state = {
             isPlayer1Move: false,
             isPlayer2Move: false,
-            isGameOver: false
+            isGameOver: false,
+            isSingleMode: false,
+            symbol: {},
+            isGameStarted: false
 
         }
     }
@@ -60,10 +63,10 @@ class TicTacToe extends Component {
 
     prepareResult(getResult) {
         if (getResult.result === 'Win') {
-            $('.dispResult').text(`Player ${getResult.player} is Winner`)
+            $('.selectMode').text(`Player ${getResult.player} is Winner`)
         }
         if (getResult.result === 'Draw') {
-            $('.dispResult').text(`Draw`)
+            $('.selectMode').text(`Draw`)
         }
         $('.board').addClass('isGameOver')
 
@@ -72,54 +75,110 @@ class TicTacToe extends Component {
 
     onClickBoard = ({target:{dataset:{id}}}) => {
 
-        if (!this.state.isPlayer1Move && !this.state.isPlayer2Move) {
-            this.setState({isPlayer1Move: true});
-        }
-
         const innerTextVal = $(`div[data-id=${id}]`).text();
         if (innerTextVal.length === 0 && this.state.isPlayer1Move) {
-            $(`div[data-id=${id}]`).text('X');
+            $(`div[data-id=${id}]`).text(this.state.symbol.player1);
             this.setState({isPlayer1Move: false});
             this.setState({isPlayer2Move: true});
+            $('.selectMode').text('Player 2 Turn')
         }
-        if (innerTextVal.length === 0 && this.state.isPlayer2Move) {
-            $(`div[data-id=${id}]`).text('O')
+        if (!this.state.isSingleMode) {
+            if (innerTextVal.length === 0 && this.state.isPlayer2Move) {
+                $(`div[data-id=${id}]`).text(this.state.symbol.player2)
+                this.setState({isPlayer1Move: true});
+                this.setState({isPlayer2Move: false});
+                $('.selectMode').text('Player 1 Turn')
+            }
+
+        } else {
+            const allDiv = Array.from($('.ticcol'));
+            const textVal = allDiv.map((d)=>d.innerText);
+            const xIndices = textVal.map((d, i)=> (d.length === 0) ? i : -1).filter((e)=>e !== -1);
+            const random = xIndices[Math.floor(Math.random() * xIndices.length)];
+            $(`div[data-id=${random}]`).text(this.state.symbol.player2)
             this.setState({isPlayer1Move: true});
             this.setState({isPlayer2Move: false});
+            $('.selectMode').text('Player 1 Turn')
 
         }
 
         const getResult = this.getBoardValue();
-
         if (getResult !== undefined) {
-            this.setState({isGameOver: true})
-            console.log(getResult)
+            this.setState({isGameOver: true});
             this.prepareResult(getResult)
         }
-
-
     }
 
-    resetBoard = () => {
 
+    resetBoard = () => {
         this.setState({
             isPlayer1Move: false,
             isPlayer2Move: false,
             isGameOver: false
-        })
+        });
         $('.ticcol').text('');
         $('.dispResult').text('');
-        $('.board').removeClass('isGameOver');
+        $('.board').css('display', 'none');
+        $('.selectMode').text('Select Mode :');
+        $('.mode').show();
+
 
     }
 
-    render() {
+    onClickMode = ({target:{className}}) => {
+        if (className === 'single') {
+            this.setState({isSingleMode: true})
+        } else {
+            this.setState({isSingleMode: false})
+        }
 
+
+        $('.mode').hide();
+        $('.selectMode').text('Select Symbol');
+        $('.symbolSelect').css('display', 'flex');
+        $('.board').removeClass('isGameOver')
+
+    }
+
+    onClickSymbol = ({target:{innerText}}) => {
+
+        if (innerText === 'X') {
+            this.setState({symbol: {player1: 'X', player2: 'O'}, isPlayer1Move: true});
+
+        }
+        if (innerText === 'O') {
+            this.setState({symbol: {player1: 'O', player2: 'X'}, isPlayer1Move: true});
+        }
+
+        $('.symbolSelect').css('display', 'none');
+        $('.board').css('display', 'flex');
+
+        $('.selectMode').text(`Player ${innerText} turn`);
+
+    }
+
+
+    render() {
         return (
-            <div className="tictacContainer image-reset-gray-hi"><h1>Tic Tac Toe</h1>
-                <div className="result"><div className="dispResult"></div>
+            <div className="tictacContainer image-reset-gray-hi"><h1 className="title">Tic Tac Toe</h1>
+                <div className="result">
+                    <div className="dispResult"></div>
+                    <div className="selectMode">
+                        Select Mode:
+                    </div>
+                    <div className="mode">
+                        <span className="single" onClick={this.onClickMode}>Single Player</span>
+                        <span className="multi" onClick={this.onClickMode}>Multi Player</span>
+                    </div>
+                    <div className="symbolSelect">
+                        <span className="single" onClick={this.onClickSymbol}>X</span>
+                        <span className="multi" onClick={this.onClickSymbol}>O</span>
+                    </div>
                     <span onClick={this.resetBoard}><i className="fa fa-refresh fa-3x" aria-hidden="true"></i></span>
+
                 </div>
+
+
                 <div className="board">
 
                     <div className="ticrow">

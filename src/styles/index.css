@@ -2025,16 +2025,46 @@ path {
   align-items: center;
   flex-direction: column;
 }
+.tictacContainer .title {
+  font-size: 60px;
+}
 .tictacContainer .result {
   display: flex;
   background: aliceblue;
   width: 50vw;
-  height: 10vh;
+  height: 17vh;
   justify-content: space-between;
   align-items: center;
 }
-.tictacContainer .board {
+.tictacContainer .result .selectMode {
+  font-size: 30px;
+}
+.tictacContainer .result .mode {
+  font-size: 25px;
   display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+.tictacContainer .result .mode span {
+  background: lightgray;
+  border: 1px solid;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+.tictacContainer .result .symbolSelect {
+  display: none;
+  font-size: 25px;
+  flex-direction: column;
+  cursor: pointer;
+}
+.tictacContainer .result .symbolSelect span {
+  background: lightgray;
+  border: 1px solid;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+.tictacContainer .board {
+  display: none;
   height: 40vh;
   width: 50vw;
   background: darkgrey;

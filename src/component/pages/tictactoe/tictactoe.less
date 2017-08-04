@@ -4,18 +4,51 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  .title {
+    font-size: 60px;
+  }
 
   .result {
     display: flex;
     background: aliceblue;
     width: 50vw;
-    height: 10vh;
+    height: 17vh;
     justify-content: space-between;
     align-items: center;
+
+    .selectMode {
+      font-size: 30px;
+    }
+    .mode {
+      font-size: 25px;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      span {
+        background: lightgray;
+        border: 1px solid;
+        padding: 5px;
+        margin-bottom: 10px;
+      }
+
+    }
+    .symbolSelect {
+      display: none;
+      font-size: 25px;
+      flex-direction: column;
+      cursor: pointer;
+      span {
+        background: lightgray;
+        border: 1px solid;
+        padding: 5px;
+        margin-bottom: 10px;
+      }
+
+    }
   }
 
   .board {
-    display: flex;
+    display: none;
     height: 40vh;
     width: 50vw;
     background: darkgrey;
