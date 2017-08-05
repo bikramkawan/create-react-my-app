@@ -2108,25 +2108,39 @@ path {
   align-items: center;
   flex-wrap: wrap;
 }
+.simonContainer .mainContainer .grid.gameOn {
+  cursor: pointer;
+}
 .simonContainer .mainContainer .grid .innerCircle {
   flex-grow: 1;
   flex-basis: 45%;
   background: purple;
   height: 43%;
   margin: 2%;
-  cursor: pointer;
 }
-.simonContainer .mainContainer .grid .innerCircle.red {
-  background-color: red;
+.simonContainer .mainContainer .grid .innerCircle.red.inactive {
+  background-color: #9f0f17;
 }
-.simonContainer .mainContainer .grid .innerCircle.blue {
-  background-color: darkblue;
+.simonContainer .mainContainer .grid .innerCircle.red.active {
+  background-color: #FC0102;
 }
-.simonContainer .mainContainer .grid .innerCircle.green {
-  background-color: green;
+.simonContainer .mainContainer .grid .innerCircle.blue.inactive {
+  background-color: #094a8f;
 }
-.simonContainer .mainContainer .grid .innerCircle.yellow {
-  background-color: yellow;
+.simonContainer .mainContainer .grid .innerCircle.blue.active {
+  background-color: #1c8cff;
+}
+.simonContainer .mainContainer .grid .innerCircle.green.inactive {
+  background-color: #00a74a;
+}
+.simonContainer .mainContainer .grid .innerCircle.green.active {
+  background-color: #13ff7c;
+}
+.simonContainer .mainContainer .grid .innerCircle.yellow.inactive {
+  background-color: #cca707;
+}
+.simonContainer .mainContainer .grid .innerCircle.yellow.active {
+  background-color: #fed93f;
 }
 .simonContainer .mainContainer .center {
   position: absolute;
@@ -2158,21 +2172,23 @@ path {
   align-items: center;
   font-size: 30px;
 }
+.simonContainer .mainContainer .center .middle.gameOn {
+  cursor: pointer;
+}
 .simonContainer .mainContainer .center .middle .section {
   border-radius: 50%;
   padding: 10px;
   background-color: #f98110;
 }
 .simonContainer .mainContainer .center .middle .section.score {
+  display: none;
   font-size: 50px;
 }
 .simonContainer .mainContainer .center .middle .section.start {
   background-color: green;
-  cursor: pointer;
 }
 .simonContainer .mainContainer .center .middle .section.strict {
   background-color: red;
-  cursor: pointer;
 }
 .simonContainer .mainContainer .center .bottom {
   flex-basis: 20%;

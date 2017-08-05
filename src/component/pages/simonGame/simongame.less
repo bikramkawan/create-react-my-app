@@ -14,25 +14,48 @@
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
+      &.gameOn {
+        cursor: pointer;
+      }
       .innerCircle {
         flex-grow: 1;
         flex-basis: 45%;
         background: purple;
         height: 43%;
         margin: 2%;
-        cursor: pointer;
+
         &.red {
-          background-color: red;
+          &.inactive {
+            background-color: #9f0f17;
+          }
+          &.active {
+            background-color: #FC0102;
+          }
 
         }
         &.blue {
-          background-color: darkblue;
+          &.inactive {
+            background-color: #094a8f;
+          }
+          &.active {
+            background-color: #1c8cff;
+          }
         }
         &.green {
-          background-color: green;
+          &.inactive {
+            background-color: #00a74a
+          }
+          &.active {
+            background-color: #13ff7c;
+          }
         }
         &.yellow {
-          background-color: yellow;
+          &.inactive {
+            background-color: #cca707;
+          }
+          &.active {
+            background-color: #fed93f;
+          }
         }
       }
     }
@@ -66,21 +89,24 @@
         justify-content: space-around;
         align-items: center;
         font-size: 30px;
+        &.gameOn {
+          cursor: pointer;
+        }
         .section {
           border-radius: 50%;
           padding: 10px;
           background-color: #f98110;
           &.score {
+            display: none;
             font-size: 50px;
           }
           &.start {
             background-color: green;
-            cursor: pointer;
 
           }
           &.strict {
             background-color: red;
-            cursor: pointer;
+
           }
         }
       }
