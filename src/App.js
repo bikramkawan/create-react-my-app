@@ -6,7 +6,7 @@ import {Route} from 'react-router-dom'
 import Contact from './component/pages/contact/Contact'
 import AboutMe from './component/pages/aboutme/AboutMe';
 import Portfolio from './component/pages/portfolio/Portfolio'
-import TicTacToe from './component/pages/tictactoe/TicTacToe'
+import SimonGame from './component/pages/simonGame/SimonGame'
 
 
 const Main = () => (
@@ -16,7 +16,7 @@ const Main = () => (
         <Route path='/Contact' component={Contact}/>
         <Route path='/AboutMe' component={AboutMe}/>
         <Route path='/Portfolio' component={Portfolio}/>
-        <Route path='/TicTacToe' component={TicTacToe}/>
+        <Route path='/SimonGame' component={SimonGame}/>
 
     </div>
 )
@@ -29,7 +29,7 @@ class App extends Component {
             {label: 'Home', linkTo: 'Home'},
             {label: 'Portfolio', linkTo: 'Portfolio'},
             {label: 'About Me', linkTo: 'AboutMe'},
-            {label: 'TicTacToe', linkTo: 'TicTacToe'},
+            {label: 'SimonGame', linkTo: 'SimonGame'},
             {label: 'Contact Me', linkTo: 'Contact'}];
         return (
             <div className="root">

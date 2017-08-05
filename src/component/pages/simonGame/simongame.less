@@ -1,0 +1,99 @@
+.simonContainer {
+  display: flex;
+  height: 80vh;
+  background: aliceblue;
+  justify-content: center;
+  align-items: center;
+  .mainContainer {
+    position: relative;
+    .grid {
+      height: 60vh;
+      width: 40vw;
+      background: darkgrey;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      .innerCircle {
+        flex-grow: 1;
+        flex-basis: 45%;
+        background: purple;
+        height: 43%;
+        margin: 2%;
+        cursor: pointer;
+        &.red {
+          background-color: red;
+
+        }
+        &.blue {
+          background-color: darkblue;
+        }
+        &.green {
+          background-color: green;
+        }
+        &.yellow {
+          background-color: yellow;
+        }
+      }
+    }
+
+    .center {
+      position: absolute;
+      top: 20%;
+      left: 25%;
+      height: 63%;
+      width: 50%;
+      background: lightgrey;
+      border-radius: 50%;
+      margin: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+
+      .top {
+        flex-basis: 20%;
+        width: 100%;
+        border-bottom: 1px solid;
+        font-size: 40px;
+      }
+      .middle {
+        flex-basis: 40%;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-size: 30px;
+        .section {
+          border-radius: 50%;
+          padding: 10px;
+          background-color: #f98110;
+          &.score {
+            font-size: 50px;
+          }
+          &.start {
+            background-color: green;
+            cursor: pointer;
+
+          }
+          &.strict {
+            background-color: red;
+            cursor: pointer;
+          }
+        }
+      }
+      .bottom {
+        flex-basis: 20%;
+        background: dodgerblue;
+        font-size: 30px;
+        border-radius: 50%;
+        padding: 10px;
+        cursor: pointer;
+      }
+
+    }
+
+  }
+}
