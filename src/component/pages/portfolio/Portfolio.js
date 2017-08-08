@@ -12,6 +12,7 @@ import MobileOsVoting from '../../../mobileOSVoting/MobileOsVoting';
 import MarkdownPreview from '../../markDownPreview/MarkdownPreview';
 import Calculator from  '../calculator/Calculator';
 import PomodoroClock from '../pomodoroClock/PomodoroClock';
+import SimonGame from '../simonGame/SimonGame'
 
 import * as $ from 'jquery';
 
@@ -50,7 +51,8 @@ class Portfolio extends Component {
             isVoting: false,
             isMarkdown: false,
             isCalculator: false,
-            isClock: false
+            isClock: false,
+            isSimonGame: false
         };
     }
 
@@ -99,6 +101,10 @@ class Portfolio extends Component {
         this.setState({isClock: true})
     }
 
+    onClickSimon = () => {
+        this.showOverlay();
+        this.setState({isSimonGame: true})
+    }
     hideBlock = ()=> {
         $('.fade').hide();
         $('.iframe').hide();
@@ -140,6 +146,7 @@ class Portfolio extends Component {
                     <h1 onClick={this.onClickMarkdown}>Markdown Preview</h1>
                     <h1 onClick={this.onClickCalc}>Calculator</h1>
                     <h1 onClick={this.onClickClock}>Pomodoro Clock</h1>
+                    <h1 onClick={this.onClickSimon}>SimonGame</h1>
 
                     <div className="iframe">
                         {this.state.displayIframe ? <WebIframe address={url[this.state.url]}/> : ''}
@@ -151,6 +158,7 @@ class Portfolio extends Component {
                         {this.state.isMarkdown ? <MarkdownPreview/> : ''}
                         {this.state.isCalculator ? <Calculator/> : ''}
                         {this.state.isClock ? <PomodoroClock/> : ''}
+                        {this.state.isSimonGame ? <SimonGame/> : ''}
 
                     </div>
                     <i className="fa fa-times-circle fa-3x" aria-hidden="true" onClick={this.hideBlock}></i>

@@ -60,7 +60,7 @@ class SimonGame extends Component {
 
         const res = this.state.pattern.map((d, i)=> d === this.state.userPattern[i])
             .filter((d)=>d === true)
-        if (res.length === this.state.pattern.length && this.state.runtime == 19) {
+        if (res.length === this.state.pattern.length && this.state.runtime === 19) {
             $(`.top`).text(`You Win`);
             clearInterval(this.state.timeStamp)
         }
